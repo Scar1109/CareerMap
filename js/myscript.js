@@ -43,24 +43,3 @@ function startSlideshow() {
     }, 5000);
 }
 
-
-//Signup submit
-function enableSubmit(){
-    if(document.getElementById("checkbox").checked){
-		document.getElementById("submitBtn").disabled=false;
-	}
-	else{
-		document.getElementById("submitBtn").disabled=true;
-	}
-}
-
-//admin dashboard nav links active
-document.querySelectorAll(".navList").forEach(function (element){
-    element.addEventListener('click',function (){
-        document.querySelectorAll(".navList").forEach((e)=>{
-            e.classList.remove('active')
-            this.classList.add('active')
-        })
-    })
-})
-
