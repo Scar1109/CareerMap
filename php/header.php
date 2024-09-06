@@ -1,5 +1,6 @@
 <?php
         $current_page = basename($_SERVER['PHP_SELF']);
+        session_start();
 ?>
 
 <link rel="stylesheet" href="../css/styles.css">
@@ -9,6 +10,32 @@
         <a href="index.php">
                 <img class="logo" src="../images/logo_Main.png" alt="logo" >
         </a>
+
+        <?php
+        if (isset($_SESSION["userName"])) {
+        echo '
+        <div class="user-dropdown">
+                <a href="userAcc.php" class="loggedInUser">
+                <i class="fa fa-user-circle-o" style="font-size:36px"></i>
+                </a>
+                <a href="userAcc.php" class="loggedInUserText">
+                <p>' . $_SESSION["userName"] . '</p>
+                </a>
+                <div class="user-dropdown-content">
+                        <a href="userAcc.php">Account details</a>
+                        <a href="includes/logout.inc.php">Log out</a>
+                </div>
+        </div>';
+        } else {
+        echo '
+        <a href="login.php" class="logIn">
+        <i class="fa fa-user-circle-o" style="font-size:36px"></i>
+        </a>
+        <a href="login.php" class="logInText">
+                <p>Log in</p>
+        </a>';
+        }
+        ?>
 </div>
 
 <ul class="headerNav">
