@@ -8,13 +8,12 @@
 </head>
 
 <body>
-
     <?php
     include_once 'header.php';
     ?>
 
 
-    <h1>Login</h1>
+    <h1>Applications</h1>
 
 
     <?php
