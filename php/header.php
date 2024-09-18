@@ -45,12 +45,7 @@
         <li <?php if($current_page === 'about.php') echo ' class="active"'; ?>><a href="blogs.php">Blogs</a></li>
         <li <?php if($current_page === 'about.php') echo ' class="active"'; ?>><a href="aboutUs.php">About Us</a></li>
         <li <?php if($current_page === 'contact.php') echo ' class="active"'; ?>><a href="contactUs.php">Contact Us</a></li>
-        <div class="search-container">
-                <form action="includes/search.inc.php">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-        </div>
+        
 </ul>
 
 

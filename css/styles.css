@@ -141,37 +141,6 @@ li.dropdown {
     display: block;
 }
 
-.headerNav .search-container {
-    float: right;
-    margin-right: 5px;
-    margin-top: 8px;
-
-}
-
-.headerNav .search-container input[type=text]{
-    padding: 6px;
-    font-size: 17px;
-    border: none;
-    border-radius: 10px 0px 0px 10px;
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: #ebf3ff;
-}
-
-.headerNav .search-container button{
-    float: right;
-    padding: 6px 10px;
-    margin-right: 16px;
-    background: #D9E8FC;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-    border-radius: 0px 10px 10px 0px;
-}
-
-.headerNav .search-container button:hover {
-    background: #8792A1;
-}
-
 /* Footer Styles */
 
 .footer {
