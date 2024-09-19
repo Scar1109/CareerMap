@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
     if ($stmt->execute()) {
         echo "<script>
                 alert('Profile created successfully!');
-                window.location.href = '/CareerMap/developers.php';
+                window.location.href = '../developers.php';
             </script>";
         exit();
     } else {

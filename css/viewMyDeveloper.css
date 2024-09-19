@@ -157,3 +157,8 @@ textarea.textarea-field-456 {
     justify-content: center;
     height: calc(100vh - 200px);
 }
+
+.editable {
+    background-color: #f0f7ff; /* Light blue background to indicate editable mode */
+    border-color: #1d64c2;
+}

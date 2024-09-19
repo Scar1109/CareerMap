@@ -19,13 +19,21 @@ document.getElementById("developerForm-234").addEventListener("submit", function
 const editButton = document.getElementById('edit-profile-btn-456');
 const saveButton = document.getElementById('save-changes-btn-456');
 const cancelButton = document.getElementById('cancel-edit-btn-456');
+
+// Select all input and textarea fields
 const inputs = document.querySelectorAll('.input-field-456');
 const textareas = document.querySelectorAll('.textarea-field-456');
 
 // Enable editing mode
 editButton.addEventListener('click', function() {
-    inputs.forEach(input => input.disabled = false); // Enable input fields
-    textareas.forEach(textarea => textarea.disabled = false); // Enable textareas
+    inputs.forEach(input => {
+        input.disabled = false; // Enable input fields
+        input.classList.add('editable'); // Optionally add a class to show it's editable (for styling)
+    });
+    textareas.forEach(textarea => {
+        textarea.disabled = false; // Enable textareas
+        textarea.classList.add('editable'); // Optionally add a class to show it's editable (for styling)
+    });
     editButton.style.display = 'none'; // Hide Edit button
     saveButton.style.display = 'inline-block'; // Show Save button
     cancelButton.style.display = 'inline-block'; // Show Cancel button
@@ -33,8 +41,14 @@ editButton.addEventListener('click', function() {
 
 // Cancel editing
 cancelButton.addEventListener('click', function() {
-    inputs.forEach(input => input.disabled = true); // Disable input fields
-    textareas.forEach(textarea => textarea.disabled = true); // Disable textareas
+    inputs.forEach(input => {
+        input.disabled = true; // Disable input fields
+        input.classList.remove('editable'); // Remove editable class
+    });
+    textareas.forEach(textarea => {
+        textarea.disabled = true; // Disable textareas
+        textarea.classList.remove('editable'); // Remove editable class
+    });
     editButton.style.display = 'inline-block'; // Show Edit button
     saveButton.style.display = 'none'; // Hide Save button
     cancelButton.style.display = 'none'; // Hide Cancel button
