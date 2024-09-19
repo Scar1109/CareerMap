@@ -21,7 +21,7 @@
     <div class="container-442">
     <div class="header-section-442">
             <h1 class="header-title-442">Developers</h1>
-            <a href="viewMyProfile.php" class="view-profile-btn-442">View My Developer Profile</a> <!-- Button to view the developer's profile -->
+            <a href="viewMyDeveloper.php" class="view-profile-btn-442">View My Developer Profile</a>
         </div>
 
         <!-- Search and Filter Section -->
@@ -37,15 +37,15 @@
 
                 <select name="filter-pay-442" id="filter-pay-442">
                     <option value="">Pay Range</option>
-                    <option value="50000">$50K - $75K</option>
-                    <option value="75000">$75K - $100K</option>
+                    <option value="50000">LKR 50K - 75K</option>
+                    <option value="75000">LKR 75K - 100K</option>
                     <!-- Add more pay ranges -->
                 </select>
 
                 <select name="filter-location-442" id="filter-location-442">
                     <option value="">Location</option>
-                    <option value="New York">New York</option>
-                    <!-- Add more locations -->
+                    <option value="New York">Colombo</option>
+                    
                 </select>
             </div>
         </div>
@@ -63,7 +63,7 @@
                         <div class="developer-info-442">
                             <h2>' . $row['fullname'] . '</h2>
                             <p class="developer-role-442">' . $row['skills'] . '</p>
-                            <p class="developer-pay-442">$' . number_format($row['pay']) . '</p>
+                            <p class="developer-pay-442">LKR ' . number_format($row['pay']) . '</p>
                             <p class="developer-bio-442">' . substr($row['bio'], 0, 100) . '...</p>
                             <div class="developer-links-442">
                                 <a href="' . $row['github_link'] . '" target="_blank">GitHub</a> |

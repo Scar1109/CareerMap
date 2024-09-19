@@ -1,0 +1,110 @@
+/* No Profile Container */
+.no-profile-container-452 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.no-profile-container-452 h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-profile-btn-452 {
+    padding: 12px 20px;
+    background-color: #1d64c2;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.create-profile-btn-452:hover {
+    background-color: #1555a7;
+}
+
+/* Profile Container */
+.profile-container-452 {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header-452 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-avatar-452 img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+.profile-info-452 {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field-452,
+.textarea-field-452 {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.input-field-452:disabled,
+.textarea-field-452:disabled {
+    background-color: #f1f1f1;
+    border-color: #ddd;
+}
+
+.input-field-452:focus,
+.textarea-field-452:focus {
+    border-color: #1d64c2;
+}
+
+/* Buttons */
+.edit-profile-btn-452,
+.save-changes-btn-452,
+.cancel-edit-btn-452,
+.delete-profile-btn-452 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #1d64c2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn-452:hover,
+.save-changes-btn-452:hover,
+.cancel-edit-btn-452:hover,
+.delete-profile-btn-452:hover {
+    background-color: #1555a7;
+}
+
+/* Profile Details Section */
+.profile-details-452 h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #1d64c2;
+}

@@ -1,8 +1,18 @@
 <?php
-// Include the database connection
-include_once 'config.php';
+session_start(); // Start session to access user ID
+include_once './config.php'; // Include database connection
 
 if (isset($_POST['submit'])) {
+    // Check if the user is logged in and the session contains a user ID
+
+    $user_id = 1; // Remove this line after testing
+    // if (isset($_SESSION['user_id'])) {
+    //     $user_id = $_SESSION['user_id']; // Fetch the user ID from the session
+    // } else {
+    //     header("Location: login.php");
+    //     exit();
+    // }
+
     // Get form data
     $fullname = $con->real_escape_string($_POST['fullname']);
     $bio = $con->real_escape_string($_POST['bio']);
@@ -39,10 +49,7 @@ if (isset($_POST['submit'])) {
                     // Adjust the path to point to the uploads folder in the root directory
                     $avatarDestination = dirname(__DIR__, 2) . '/uploads/' . $avatarNewName;
 
-
-                    if (move_uploaded_file($avatarTmpName, $avatarDestination)) {
-                        echo "Avatar uploaded successfully!";
-                    } else {
+                    if (!move_uploaded_file($avatarTmpName, $avatarDestination)) {
                         echo "Error moving the uploaded file!";
                         exit();
                     }
@@ -60,9 +67,9 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Insert the data into the developers table
-    $sql = "INSERT INTO developers (fullname, bio, skills, pay, github_link, linkedin_link, behance_link, stackoverflow_link, portfolio_link, avatar) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // Insert the data into the developers table including the user_id
+    $sql = "INSERT INTO developers (fullname, bio, skills, pay, github_link, linkedin_link, behance_link, stackoverflow_link, portfolio_link, avatar, user_id) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $con->prepare($sql);
     if ($stmt === false) {
@@ -70,7 +77,7 @@ if (isset($_POST['submit'])) {
     }
 
     $stmt->bind_param(
-        "sssdsddsss",
+        "sssdsddssss",
         $fullname,
         $bio,
         $skills,
@@ -80,15 +87,15 @@ if (isset($_POST['submit'])) {
         $behance,
         $stackoverflow,
         $portfolio,
-        $avatarNewName
+        $avatarNewName,
+        $user_id // Add user_id to bind_param
     );
 
     if ($stmt->execute()) {
-        // Display a success message and then redirect to the home page
         echo "<script>
-            alert('Profile created successfully!');
-            window.location.href = '/CareerMap/index.php'; // Adjust this to your home page URL
-        </script>";
+                alert('Profile created successfully!');
+                window.location.href = '/CareerMap/index.php';
+            </script>";
         exit();
     } else {
         echo "Error: " . $stmt->error;
