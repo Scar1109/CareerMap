@@ -1,14 +1,15 @@
 <?php
-session_start();
+// session_start();
 include_once './config.php'; // Include the DB connection
 
 // Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    echo "Error: User not logged in.";
-    exit();
-}
+// if (!isset($_SESSION['user_id'])) {
+//     echo "Error: User not logged in.";
+//     exit();
+// }
 
-$user_id = $_SESSION['user_id'];
+// $user_id = $_SESSION['user_id'];
+$user_id = 1; // Hardcoded user ID for testing
 $fullname = $_POST['fullname'];
 $bio = $_POST['bio'];
 $skills = $_POST['skills'];
@@ -30,5 +31,3 @@ if ($stmt->execute()) {
     echo "Error updating profile."; }
 
 $stmt->close(); $con->close();
-
-    

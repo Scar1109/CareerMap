@@ -43,7 +43,7 @@
     } else {
         // Fetch profile details
         $developer = $result->fetch_assoc();
-        ?>
+    ?>
 
         <h1 class="main-title-456">View Developer Profile</h1>
 
@@ -71,14 +71,15 @@
                 <input type="url" id="portfolio_link-456" value="<?php echo $developer['portfolio_link']; ?>" disabled class="input-field-456" placeholder="Portfolio Link">
 
                 <!-- Edit, Save, and Delete Buttons -->
-                <button id="edit-profile-btn-456" class="edit-profile-btn-456">Edit Profile</button>
-                <button id="save-changes-btn-456" class="save-changes-btn-456" style="display: none;">Save Changes</button>
-                <button id="cancel-edit-btn-456" class="cancel-edit-btn-456" style="display: none;">Cancel</button>
-                <button class="delete-profile-btn-456" onclick="confirmDelete(<?php echo $developer['id']; ?>)">Delete Profile</button>
+                <button id="edit-profile-btn-456" class="edit-profile-btn-456" onclick="enableEdit()">Edit Profile</button>
+                <button id="save-changes-btn-456" class="save-changes-btn-456" style="display: none;" onclick="saveChanges()">Save Changes</button>
+                <button id="cancel-edit-btn-456" class="cancel-edit-btn-456" style="display: none;" onclick="cancelEdit()">Cancel</button>
+                <button id="delete-profile-btn-456" class="delete-profile-btn-456" onclick="confirmDelete(<?php echo $developer['id']; ?>)">Delete Profile</button>
+
             </div>
         </div>
 
-        <?php
+    <?php
     }
     $stmt->close();
     $con->close();
@@ -88,7 +89,7 @@
     include_once 'footer.php';
     ?>
 
-    <script src="../js/developers.js"></script> 
+    <script src="../js/developers.js"></script>
 
 </body>
 

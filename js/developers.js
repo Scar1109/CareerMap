@@ -15,49 +15,61 @@ document.getElementById("developerForm-234").addEventListener("submit", function
 
 //View My Developer profile 
 
-// JavaScript for enabling and disabling fields
-const editButton = document.getElementById('edit-profile-btn-456');
-const saveButton = document.getElementById('save-changes-btn-456');
-const cancelButton = document.getElementById('cancel-edit-btn-456');
+// Enable Edit Mode with Confirmation
+function enableEdit() {
+    if (confirm("Do you want to enable editing?")) {
+        const inputs = document.querySelectorAll('.input-field-456');
+        const textareas = document.querySelectorAll('.textarea-field-456');
+        
+        // Enable all input fields and textareas
+        inputs.forEach(input => {
+            input.disabled = false; 
+            input.classList.add('editable'); 
+        });
+        
+        textareas.forEach(textarea => {
+            textarea.disabled = false;
+            textarea.classList.add('editable');
+        });
 
-// Select all input and textarea fields
-const inputs = document.querySelectorAll('.input-field-456');
-const textareas = document.querySelectorAll('.textarea-field-456');
+        // Hide Edit button and Delete button
+        document.getElementById('edit-profile-btn-456').style.display = 'none'; 
+        document.getElementById('delete-profile-btn-456').style.display = 'none'; // Hide Delete button
 
-// Enable editing mode
-editButton.addEventListener('click', function() {
+        // Show Save and Cancel buttons
+        document.getElementById('save-changes-btn-456').style.display = 'inline-block'; 
+        document.getElementById('cancel-edit-btn-456').style.display = 'inline-block'; 
+    }
+}
+
+// Cancel Editing
+function cancelEdit() {
+    const inputs = document.querySelectorAll('.input-field-456');
+    const textareas = document.querySelectorAll('.textarea-field-456');
+
+    // Disable all input fields and textareas
     inputs.forEach(input => {
-        input.disabled = false; // Enable input fields
-        input.classList.add('editable'); // Optionally add a class to show it's editable (for styling)
+        input.disabled = true; 
+        input.classList.remove('editable'); 
     });
+    
     textareas.forEach(textarea => {
-        textarea.disabled = false; // Enable textareas
-        textarea.classList.add('editable'); // Optionally add a class to show it's editable (for styling)
+        textarea.disabled = true; 
+        textarea.classList.remove('editable');
     });
-    editButton.style.display = 'none'; // Hide Edit button
-    saveButton.style.display = 'inline-block'; // Show Save button
-    cancelButton.style.display = 'inline-block'; // Show Cancel button
-});
 
-// Cancel editing
-cancelButton.addEventListener('click', function() {
-    inputs.forEach(input => {
-        input.disabled = true; // Disable input fields
-        input.classList.remove('editable'); // Remove editable class
-    });
-    textareas.forEach(textarea => {
-        textarea.disabled = true; // Disable textareas
-        textarea.classList.remove('editable'); // Remove editable class
-    });
-    editButton.style.display = 'inline-block'; // Show Edit button
-    saveButton.style.display = 'none'; // Hide Save button
-    cancelButton.style.display = 'none'; // Hide Cancel button
-});
+    // Show Edit button and Delete button
+    document.getElementById('edit-profile-btn-456').style.display = 'inline-block'; 
+    document.getElementById('delete-profile-btn-456').style.display = 'inline-block'; 
 
-// Save changes
-saveButton.addEventListener('click', function() {
+    // Hide Save and Cancel buttons
+    document.getElementById('save-changes-btn-456').style.display = 'none'; 
+    document.getElementById('cancel-edit-btn-456').style.display = 'none'; 
+}
+
+// Save Changes Function
+function saveChanges() {
     if (confirm("Are you sure you want to save changes?")) {
-        // Perform AJAX request to update the developer profile
         const fullname = document.getElementById('fullname-456').value;
         const bio = document.getElementById('bio-456').value;
         const skills = document.getElementById('skills-456').value;
@@ -71,7 +83,7 @@ saveButton.addEventListener('click', function() {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'includes/updateDeveloper.inc.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (xhr.status === 200) {
                 alert('Profile updated successfully!');
                 location.reload(); // Reload the page after successful update
@@ -81,7 +93,7 @@ saveButton.addEventListener('click', function() {
         };
         xhr.send('fullname=' + fullname + '&bio=' + bio + '&skills=' + skills + '&pay=' + pay + '&github_link=' + github_link + '&linkedin_link=' + linkedin_link + '&behance_link=' + behance_link + '&stackoverflow_link=' + stackoverflow_link + '&portfolio_link=' + portfolio_link);
     }
-});
+}
 
 // Delete profile with confirmation
 function confirmDelete(developerId) {
