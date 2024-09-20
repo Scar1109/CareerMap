@@ -1,15 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: #f4f4f4;
-    color: #333;
-}
-
 .container-234 {
     max-width: 800px;
     margin: 50px auto;
@@ -26,18 +14,18 @@ body {
     font-size: 2rem;
 }
 
-form {
+.form-234 {
     display: flex;
     flex-direction: column;
 }
 
-label {
+.label-234 {
     margin-top: 15px;
     font-weight: bold;
     color: #1d64c2;
 }
 
-input, textarea {
+.input-234, .textarea-234 {
     margin-top: 8px;
     padding: 12px;
     border: 1px solid #ccc;
@@ -47,14 +35,14 @@ input, textarea {
     transition: all 0.3s ease;
 }
 
-input:focus, textarea:focus {
+.input-234:focus, .textarea-234:focus {
     outline: none;
     border-color: #1d64c2;
     box-shadow: 0 0 5px rgba(29, 100, 194, 0.5);
     background-color: #f4f9ff;
 }
 
-input[type="file"] {
+.input-file-234 {
     padding: 10px;
 }
 
@@ -80,32 +68,51 @@ input[type="file"] {
     transform: translateY(1px);
 }
 
-.avatar-section-234 label {
+.avatar-section-234 .label-234 {
     color: #1d64c2;
     font-weight: bold;
 }
 
-.avatar-section-234 input {
+.avatar-section-234 .input-file-234 {
     margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.avatar-section-234 input:hover {
+.avatar-section-234 .input-file-234:hover {
     background-color: #f0f7ff;
 }
 
-textarea {
+.textarea-234 {
     resize: vertical;
 }
 
 /* Styling for the link inputs */
-input[type="url"] {
+.input-url-234 {
     border: 1px solid #ddd;
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
 }
 
-input[type="url"]:focus {
+.input-url-234:focus {
+    outline: none;
     border-color: #1d64c2;
-    background-color: #f0f7ff;
+    box-shadow: 0 0 5px rgba(29, 100, 194, 0.5);
+    background-color: #f4f9ff;
 }
+
+.input-url-234:disabled {
+    background-color: #f1f1f1;
+    color: #999;
+}
+
+.input-url-234::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
