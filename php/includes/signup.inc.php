@@ -10,6 +10,8 @@ require_once 'functions.inc.php';  // Functions for input validation
 if (isset($_POST["submit"])) {
 
     // Retrieve user input
+    $first_name = $_POST["first_name"];  // New field
+    $last_name = $_POST["last_name"];    // New field
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -17,7 +19,7 @@ if (isset($_POST["submit"])) {
     $role = $_POST["role"];
    
     // Validate input (You can create custom validation functions in functions.inc.php)
-    if (emptyInputsSignup($username, $email, $password, $role) !== false) {
+    if (emptyInputsSignup($username, $email, $password, $role, $first_name, $last_name) !== false) {
         header("Location: ../signup.php?error=emptyinput");
         exit();
     }
@@ -38,9 +40,10 @@ if (isset($_POST["submit"])) {
     }
 
     // Register user and redirect based on role
-    createUser($conn, $username, $email, $password, $phone_number, $role);
+    createUser($conn, $first_name, $last_name, $username, $email, $password, $phone_number, $role);
 
 } else {
     header("Location: ../signup.php");
     exit();
 }
+

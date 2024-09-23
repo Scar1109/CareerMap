@@ -115,6 +115,13 @@ $phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if no
             justify-content: center;
             align-items: center;
         }
+        .logo {
+            height: 40px;
+            width: 160px;
+            display: block;
+            margin-top: 15px;
+            float: left;
+        }
     </style>
 </head>
 <body>
@@ -125,7 +132,7 @@ $phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if no
     <div class="container">
         <div class="profile-header">
             <div class="profile-pic">
-                <img src="/api/placeholder/100/100" alt="Profile Picture">
+                <img src="../images/profile.png" alt="Profile Picture">
             </div>
             <h1><?= htmlspecialchars($firstName . ' ' . $lastName) ?></h1>
             <p>User ID: <?= htmlspecialchars($userId) ?></p>

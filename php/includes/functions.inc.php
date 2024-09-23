@@ -70,9 +70,10 @@ function invalidEmail($email)
 
 
 /// Function to create a new user
-function createUser($conn, $username, $email, $password, $phone_number, $role)
+function createUser($conn, $first_name, $last_name, $username, $email, $password, $phone_number, $role)
 {
-    $sql = "INSERT INTO users (username, email, password, phone_number, role) VALUES (?, ?, ?, ?, ?);";
+    // Insert user into the database, including first_name and last_name
+    $sql = "INSERT INTO users (first_name, last_name, username, email, password, phone_number, role) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../signup.php?error=stmtfailed");
@@ -83,18 +84,47 @@ function createUser($conn, $username, $email, $password, $phone_number, $role)
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Bind parameters and execute the statement
-    mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $hashedPassword, $phone_number, $role);
+    mysqli_stmt_bind_param($stmt, "sssssss", $first_name, $last_name, $username, $email, $hashedPassword, $phone_number, $role);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    // Redirect user based on role
+    // Fetch the newly created user details from the database
+    $sql = "SELECT * FROM users WHERE username = ? OR email = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    $user = mysqli_fetch_assoc($result);
+
+    // Start session and set session variables to log the user in
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Set session variables with user details
+    $_SESSION["userid"] = $user['id'];
+    $_SESSION["username"] = $user['username'];
+    $_SESSION["first_name"] = $user['first_name'];
+    $_SESSION["last_name"] = $user['last_name'];
+    $_SESSION["email"] = $user['email'];
+    $_SESSION["phone_number"] = $user['phone_number'];
+
+    // Redirect based on role
     if ($role === 'user') {
         header("Location: ../index.php?signup=success");
     } elseif ($role === 'employee') {
-        header("Location: ../employee_dashboard.php?signup=success");  // Replace with the correct page for employee
+        header("Location: ../employee_dashboard.php?signup=success"); 
     } else {
-        header("Location: ../index.php"); // Default redirection
+        header("Location: ../index.php");
     }
     exit();
 }
+
+
 
