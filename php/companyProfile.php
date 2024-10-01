@@ -64,8 +64,8 @@ if ($company_id > 0) {
             </div>
         </div>
         <div class="CP_social-actions">
-            <button class="CP_follow-btn">Follow</button>
-            <button class="CP_share-btn">Share</button>
+            <button class="CP_follow-btn">Edit</button>
+            <button class="CP_share-btn">Delete</button>
         </div>
     </section>
 
@@ -73,11 +73,12 @@ if ($company_id > 0) {
         <h2>About Us</h2>
         <p><?php echo nl2br(htmlspecialchars($company['about'])); ?></p>
         <h3>Why Choose Us</h3>
-        <ul>
-            <li>Reason 1</li>
-            <li>Reason 2</li>
-            <li>Reason 3</li>
-        </ul>
+            <ul>
+                <li>Innovative solutions tailored to meet your business needs.</li>
+                <li>Experienced team with a proven track record of success.</li>
+                <li>Dedicated customer support ensuring seamless collaboration.</li>
+            </ul>
+
     </section>
 
     <section class="CP_recent-jobs">

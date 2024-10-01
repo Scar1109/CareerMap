@@ -2,7 +2,7 @@
 include_once 'includes/config.php';
 
 // Get the job ID from the URL or default to 2 for testing purposes
-$job_id = isset($_GET['job_id']) ? (int)$_GET['job_id'] : 7;
+$job_id = isset($_GET['job_id']) ? (int)$_GET['job_id'] : 8;
 
 if ($job_id > 0) {
     // Fetch job details from the database
@@ -89,12 +89,12 @@ function time_elapsed_string($datetime, $full = false) {
             </div>
 
             <div class="JB_responsibilities">
-                <h3>Responsibilities</h3>
-                <ul>
-                    <li>Responsibility 1</li>
-                    <li>Responsibility 2</li>
-                    <li>Responsibility 3</li>
-                </ul>
+            <h3>Responsibilities</h3>
+                    <ul>
+                        <li>Collaborate with cross-functional teams to define, design, and ship new features.</li>
+                        <li>Maintain high code quality through regular testing and reviewing processes.</li>
+                        <li>Analyze and optimize performance for scalability and stability of the system.</li>
+                    </ul>
             </div>
         </div>
     </section>

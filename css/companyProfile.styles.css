@@ -73,21 +73,21 @@
 }
 
 .CP_follow-btn {
-    background-color: #007bff;
+    background-color: #767d85;
     color: white;
 }
 
 .CP_follow-btn:hover {
-    background-color: #0056b3;
+    background-color: #9fa6ad;
 }
 
 .CP_share-btn {
-    background-color: #28a745;
+    background-color: #770505;
     color: white;
 }
 
 .CP_share-btn:hover {
-    background-color: #218838;
+    background-color: #a50808;
 }
 
 /* About Us Section */

@@ -9,10 +9,11 @@
 <body class="JB_body">
 <?php
     include_once 'header.php';
-    ?>
+?>
     <div class="JB_form-container">
     <h1 class="JB_heading">Create a Job</h1>
-    <form action="../php/includes/createJob.inc.php" method="POST" class="JB_form">
+    <form action="../php/includes/createJob.inc.php" method="POST" class="JB_form" enctype="multipart/form-data">
+        
         <label for="JB_title" class="JB_label">Job Title</label>
         <input type="text" id="JB_title" name="title" class="JB_input" placeholder="Enter the job title" required><br>
 
@@ -23,13 +24,19 @@
         <input type="text" id="JB_location" name="location" class="JB_input" placeholder="Enter job location" required><br>
 
         <label for="JB_salary" class="JB_label">Salary</label>
-        <input type="text" id="JB_salary" name="salary" class="JB_input" placeholder="Enter salary (e.g., 50000)" required><br>
+        <input type="number" id="JB_salary" name="salary" class="JB_input" placeholder="Enter salary (e.g., 50000)" required><br>
+
+        <label for="JB_company_id" class="JB_label">Company ID</label>
+        <input type="number" id="JB_company_id" name="company_id" class="JB_input" placeholder="Enter company ID" required><br>
+
+        <label for="JB_company_image" class="JB_label">Company Image</label>
+        <input type="text" id="JB_company_image" name="company_image" class="JB_input" placeholder="Enter company Image Url" required><br>
 
         <input type="submit" value="Create Job" class="JB_button">
     </form>
 </div>
-    <?php
+<?php
     include_once 'footer.php';
-    ?>
+?>
 </body>
 </html>
