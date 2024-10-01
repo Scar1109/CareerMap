@@ -22,6 +22,7 @@ if (isset($_POST["submit"])) {
 }
 
 // Define the loginUser function
+// Define the loginUser function
 function loginUser($conn, $username, $password) {
     // Check if the username or email exists in the database
     $user = usernameExists($conn, $username, $username);  // Username or email lookup
@@ -50,6 +51,7 @@ function loginUser($conn, $username, $password) {
         $_SESSION["email"] = $user["email"];
         $_SESSION["phone_number"] = $user["phone_number"];
         $_SESSION["role"] = $user["role"];
+        $_SESSION["description"] = $user["description"]; // Fetch and store description
 
         // Redirect based on user role
         if ($user["role"] === 'user') {
@@ -61,6 +63,7 @@ function loginUser($conn, $username, $password) {
         }
     }
 }
+
 
 
 // Define the usernameExists function that checks if the username or email exists in the database

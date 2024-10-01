@@ -2,21 +2,27 @@
 session_start();
 
 // Check if the user is logged in
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if (!isset($_SESSION["userid"])) {
+    // Redirect to login page if not logged in
+    header("Location: login.php");
+    exit();
 }
 
-
-
-// Fetch user data from session
 // Fetch user data from session with default values to avoid warnings
 $userId = $_SESSION["userid"] ?? '';
 $username = $_SESSION["username"] ?? '';
-$firstName = $_SESSION["first_name"] ?? ''; // Default to empty string if not set
-$lastName = $_SESSION["last_name"] ?? '';   // Default to empty string if not set
-$email = $_SESSION["email"] ?? '';           // Default to empty string if not set
-$phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if not set
+$firstName = $_SESSION["first_name"] ?? '';
+$lastName = $_SESSION["last_name"] ?? '';
+$email = $_SESSION["email"] ?? '';
+$phoneNumber = $_SESSION["phone_number"] ?? '';
+$description = $_SESSION["description"] ?? '';
+
+// Check for update success message
+$updateMessage = '';
+if (isset($_GET['update']) && $_GET['update'] == 'success') {
+    $updateMessage = "Profile updated successfully!";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -122,14 +128,24 @@ $phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if no
             margin-top: 15px;
             float: left;
         }
+        .update-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-<?php
-    include_once 'header.php';
-    ?>
+    <?php include_once 'header.php'; ?>
 
     <div class="container">
+        <?php if ($updateMessage): ?>
+            <div class="update-message"><?= htmlspecialchars($updateMessage) ?></div>
+        <?php endif; ?>
+
         <div class="profile-header">
             <div class="profile-pic">
                 <img src="../images/profile.png" alt="Profile Picture">
@@ -148,15 +164,15 @@ $phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if no
 
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name" value="<?= htmlspecialchars($firstName) ?>" required>
+                <input type="text" id="first-name" name="first_name" value="<?= htmlspecialchars($firstName) ?>" required>
             </div>
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name" value="<?= htmlspecialchars($lastName) ?>" required>
+                <input type="text" id="last-name" name="last_name" value="<?= htmlspecialchars($lastName) ?>" required>
             </div>
             <div class="form-group">
-                <label for="first-name">User Name</label>
-                <input type="text" id="first-name" name="first-name" value="<?= htmlspecialchars($username) ?>" required>
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" value="<?= htmlspecialchars($username) ?>" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -168,11 +184,12 @@ $phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if no
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" rows="4"></textarea>
-            </div>
-            <button type="submit" class="full-width-button">Edit Profile</button>
-        </form>
+                <textarea id="description" name="description" rows="4"><?= htmlspecialchars($description) ?></textarea>
 
+            </div>
+            <button type="submit" class="full-width-button">Update Profile</button>
+        </form>
+            
         <div class="developer-section">
             <div class="developer-image">Image</div>
             <h3>If You Want To Be A Developer</h3>
@@ -180,9 +197,8 @@ $phoneNumber = $_SESSION["phone_number"] ?? ''; // Default to empty string if no
             <button class="full-width-button">Upgrade To Developer Account</button>
         </div>
     </div>
-    <?php
-    include_once 'footer.php';
-    ?>
+
+    <?php include_once 'footer.php'; ?>
 
     <script>
         // You can add any necessary JavaScript here
