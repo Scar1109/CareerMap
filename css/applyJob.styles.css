@@ -1,0 +1,66 @@
+/* General Body Styling */
+.AJ_container {
+    width: 60%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.AJ_apply-job {
+    text-align: center;
+}
+
+.AJ_title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.AJ_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.AJ_form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.AJ_label {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #1d64c2;
+}
+
+.AJ_input, .AJ_input-file {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.AJ_input:focus, .AJ_input-file:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.AJ_submit-btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.AJ_submit-btn:hover {
+    background-color: #0056b3;
+}

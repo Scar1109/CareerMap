@@ -1,0 +1,154 @@
+/* General Body Styling */
+.CP_body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.CP_container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* Company Profile Section */
+.CP_profile-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.CP_profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.CP_company-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.CP_company-info {
+    flex: 1;
+}
+
+.CP_company-info h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.CP_company-info p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.CP_company-details {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.CP_company-details span {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Social Actions */
+.CP_social-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.CP_follow-btn, .CP_share-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.CP_follow-btn {
+    background-color: #767d85;
+    color: white;
+}
+
+.CP_follow-btn:hover {
+    background-color: #9fa6ad;
+}
+
+.CP_share-btn {
+    background-color: #770505;
+    color: white;
+}
+
+.CP_share-btn:hover {
+    background-color: #a50808;
+}
+
+/* About Us Section */
+.CP_about-us {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.CP_about-us h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.CP_about-us p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.CP_about-us ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Recent Jobs Section */
+.CP_recent-jobs {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.CP_recent-jobs h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.CP_jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.CP_job-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.CP_job-item h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.CP_job-item p {
+    font-size: 1rem;
+    color: #666;
+}

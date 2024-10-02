@@ -14,10 +14,10 @@ function generateGreeting()
     }
 }
 
-function usernameExists($conn, $username, $email) {
+function usernameExists($con, $username, $email) {
     // SQL query to check for matching username or email
     $sql = "SELECT * FROM users WHERE username = ? OR email = ?;";
-    $stmt = mysqli_stmt_init($conn);
+    $stmt = mysqli_stmt_init($con);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../login.php?error=stmtfailed");
@@ -70,11 +70,11 @@ function invalidEmail($email)
 
 
 /// Function to create a new user
-function createUser($conn, $first_name, $last_name, $username, $email, $password, $phone_number, $role)
+function createUser($con, $first_name, $last_name, $username, $email, $password, $phone_number, $role)
 {
     // Insert user into the database, including first_name and last_name
     $sql = "INSERT INTO users (first_name, last_name, username, email, password, phone_number, role) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
+    $stmt = mysqli_stmt_init($con);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../signup.php?error=stmtfailed");
         exit();
@@ -90,7 +90,7 @@ function createUser($conn, $first_name, $last_name, $username, $email, $password
 
     // Fetch the newly created user details from the database
     $sql = "SELECT * FROM users WHERE username = ? OR email = ?;";
-    $stmt = mysqli_stmt_init($conn);
+    $stmt = mysqli_stmt_init($con);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../signup.php?error=stmtfailed");
         exit();
