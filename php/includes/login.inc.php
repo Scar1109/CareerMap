@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Include the database connection file
-require_once 'dbh.inc.php';  // Make sure this file contains the connection ($conn)
+require_once 'config.php';  // Make sure this file contains the connection ($conn)
 
 // If the form is submitted
 if (isset($_POST["submit"])) {

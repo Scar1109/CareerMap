@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database connection (correct file)
-require_once 'dbh.inc.php';  // This should be the correct file
+require_once 'config.php';  // This should be the correct file
 require_once 'functions.inc.php';  // Functions for input validation
 
 if (isset($_POST["submit"])) {
@@ -34,13 +34,13 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    if (usernameExists($conn, $username, $email) !== false) {
+    if (usernameExists($con, $username, $email) !== false) {
         header("Location: ../signup.php?error=usernametaken");
         exit();
     }
 
     // Register user and redirect based on role
-    createUser($conn, $first_name, $last_name, $username, $email, $password, $phone_number, $role);
+    createUser($con, $first_name, $last_name, $username, $email, $password, $phone_number, $role);
 
 } else {
     header("Location: ../signup.php");
