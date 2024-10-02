@@ -94,6 +94,7 @@
     <?php
     include_once 'footer.php';
     ?>
+    <script src="../js/blog.js"></script>
 </body>
 
 </html>

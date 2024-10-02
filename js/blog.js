@@ -47,3 +47,7 @@ nextButton.addEventListener('click', () => {
 
 // Initialize the first page
 showPage(currentPage);
+
+
+// Image Privew 
+
