@@ -66,7 +66,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
-    background-color: #f1f1f1;
+    width: 100%;
+    background-color: #fff;
 }
 
 .hero_text_container {
@@ -114,23 +115,123 @@ body {
 .search_filter_container {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    align-items: center; /* Vertically align items */
+    /* background-color: #f7f8fa; Light background to match the input field */
+    padding: 12px;
+    border-radius: 8px; /* Rounded corners for the whole container */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); Soft shadow for depth */
+    max-width: 800px; /* Limit the width of the whole container */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
-.search_input, .location_filter, .search_button {
-    padding: 10px;
-    margin: 0 10px;
+.search_input {
+    flex: 2;
+    padding: 12px 20px; /* Proper padding */
+    border: none;
+    background-color: #fff; /* Light grey background */
+    border-radius: 8px 0 0 8px; /* Rounded corners on the left side */
+    font-size: 1em;
+    color: #888; /* Lighter text color */
+    outline: none; /* Remove default outline */
+}
+
+.search_input::placeholder {
+    color: #bbb; /* Placeholder color similar to the design */
+}
+
+.location_filter {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background-color: #fff; /* Match input background */
+    font-size: 1em;
+    color: #333;
+    outline: none;
+    border-left: 1px solid #ddd; /* Separator between input and dropdown */
 }
 
 .search_button {
-    background-color: #000;
+    padding: 12px 20px; /* Consistent padding */
+    background-color: #000; /* Black background for the button */
     color: #fff;
     border: none;
     cursor: pointer;
+    font-size: 1em;
+    border-radius: 0 8px 8px 0; /* Rounded corners on the right side */
+    transition: background-color 0.3s ease;
+}
+
+.search_button:hover {
+    background-color: #333; /* Darker black on hover */
 }
 
 /* Job Categories */
-.job_categories_container {
+.carousel_container_001 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure the buttons and content are spread */
+    position: relative;
+    max-width: 100%;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.carousel_items_wrapper_008 {
+    overflow: hidden;
+    width: calc(5 * 270px); /* Show only 4 items at a time */
+}
+
+.carousel_items_004 {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel_item_005 {
+    background-color: #fff;
+    width: 250px;
+    margin: 0 10px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel_icon_006 {
+    font-size: 2.5em;
+}
+
+/* General button styling */
+.carousel_btn_002 {
+    background-color: transparent; /* No background */
+    color: black; /* Black arrow color */
+    border: none; /* Remove borders */
+    font-size: 2em; /* Font size for the arrows */
+    cursor: pointer; /* Make the cursor pointer for better UX */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* Keep buttons on top */
+    padding: 10px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.carousel_btn_002:hover {
+    color: #555; /* Change color to grey on hover */
+}
+
+/* Left button */
+.carousel_btn_left_003 {
+    left: -11px; /* Position to the left of the carousel */
+}
+
+/* Right button */
+.carousel_btn_right_007 {
+    right: -11px; /* Position to the right of the carousel */
+}
+
+/* .job_categories_container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -155,7 +256,7 @@ body {
 
 .category_box p {
     font-size: 1.1em;
-}
+} */
 
 /* Job Listings */
 .job_listings_section {

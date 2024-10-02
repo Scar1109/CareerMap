@@ -63,40 +63,62 @@
         </section>
 
         <!-- Jobs Search Section -->
-        <section class="job_search_section">
-            <h2 class="section_title">Explore more jobs</h2>
-            <div class="search_filter_container">
-                <input type="text" placeholder="Search for jobs..." class="search_input">
-                <select class="location_filter">
-                    <option value="">Location</option>
-                    <!-- Add more locations as options -->
-                </select>
-                <button class="search_button">Search</button>
-            </div>
+        <div class="job_search_section">
+    <h2 class="section_title">Explore more jobs</h2>
+    <div class="search_filter_container">
+        <input type="text" class="search_input" placeholder="Search for jobs...">
+        <select class="location_filter">
+            <option value="">Location</option>
+            <!-- Add more locations as needed -->
+        </select>
+        <button class="search_button">Search</button>
+    </div>
+</div>
 
-            <!-- Job Categories -->
-            <div class="job_categories_container">
-                <div class="category_box">
-                    <span class="category_icon">$</span>
-                    <h3>Finance</h3>
-                    <p>1237 jobs</p>
-                </div>
-                <div class="category_box">
-                    <span class="category_icon">👨‍🏫</span>
-                    <h3>Education</h3>
-                    <p>3546 jobs</p>
-                </div>
-                <div class="category_box">
-                    <span class="category_icon">💻</span>
-                    <h3>IT</h3>
-                    <p>5768 jobs</p>
-                </div>
-                <div class="category_box">
-                    <span class="category_icon">📊</span>
-                    <h3>Marketing</h3>
-                    <p>2473 jobs</p>
-                </div>
+            <!-- Job Categories Carousel -->
+            <div class="carousel_container_001">
+            <button class="carousel_btn_002 carousel_btn_left_003">&#8249;</button>
+    <div class="carousel_items_wrapper_008">
+        <div class="carousel_items_004">
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">$</span>
+                <h3>Finance</h3>
+                <p>1237 jobs</p>
             </div>
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">👨‍🏫</span>
+                <h3>Education</h3>
+                <p>3546 jobs</p>
+            </div>
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">💻</span>
+                <h3>IT</h3>
+                <p>5768 jobs</p>
+            </div>
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">📊</span>
+                <h3>Marketing</h3>
+                <p>2473 jobs</p>
+            </div>
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">🎨</span>
+                <h3>Design</h3>
+                <p>1024 jobs</p>
+            </div>
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">⚖️</span>
+                <h3>Legal</h3>
+                <p>890 jobs</p>
+            </div>
+            <div class="carousel_item_005">
+                <span class="carousel_icon_006">🛠</span>
+                <h3>Engineering</h3>
+                <p>2219 jobs</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel_btn_002 carousel_btn_right_007">&#8250;</button>
+</div>
         </section>
 
         <!-- Job Listings Section -->

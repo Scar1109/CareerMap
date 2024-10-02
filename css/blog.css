@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.blog_page_container_001 {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    /* background-color: #fff; */
+}
+
+.blog_page_header_002 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1891d1;
+    color: #fff;
+    padding: 20px;
+}
+
+.blog_page_header_002 h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.add_blog_button_003 {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add_blog_button_003:hover {
+    background-color: #444;
+}
+
+.blog_grid_container_004 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.blog_card_005 {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.blog_card_005:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.blog_date_006 {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.blog_image_007 {
+    height: 150px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #666;
+}
+
+.blog_description_008 h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.blog_description_008 p {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Pagination */
+.pagination_container_009 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination_button_010 {
+    padding: 10px 20px; /* Adjust padding for better button size */
+    margin: 0 5px;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; /* Make the buttons circular */
+    font-size: 1.5em; /* Increase font size for the arrows */
+    transition: background-color 0.3s ease;
+    width: 40px; /* Fixed width and height for circular shape */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination_button_010:disabled {
+    background-color: #ccc; /* Gray background when disabled */
+    cursor: not-allowed;
+}
+
+.pagination_button_010:hover:not(:disabled) {
+    background-color: #444; /* Darker color on hover */
+}
+
+#paginationInfo {
+    font-size: 1.2em;
+    margin: 0 10px;
+    color: #333;
+}
+
+
+/* ADD  BLOGS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.add_blog_container_001 {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form_title_002 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.image_upload_container_003 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image_upload_label_004 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    background-color: #1891d1;
+    cursor: pointer;
+}
+
+.image_preview_005 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.image_input_006 {
+    display: none;
+}
+
+.image_placeholder_007 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    font-size: 2em;
+}
+
+.image_placeholder_007:hover {
+    cursor: pointer;
+}
+
+.image_preview_008 {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.clear_image_button_009 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.clear_image_button_009:hover {
+    background-color: darkred;
+}
+
+.form_group_008 {
+    margin-bottom: 20px;
+}
+
+.form_group_008 label {
+    font-size: 1em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input_field_009, .textarea_field_010 {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.textarea_field_010 {
+    height: 120px;
+    resize: none;
+}
+
+.form_buttons_011 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel_button_012 {
+    background-color: #fff;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel_button_012:hover {
+    background-color: #f1f1f1;
+}
+
+.save_button_013 {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save_button_013:hover {
+    background-color: #333;
+}
+
+

@@ -3,7 +3,7 @@
 
 // Database configuration
 $host = 'localhost';     // Usually 'localhost' for local development
-$dbname = 'developers';  // Your database name
+$dbname = 'careermap';  // Your database name
 $username = 'root';      // Your database username
 $password = '';          // Your database password
 
@@ -35,5 +35,5 @@ try {
 }
 */
 
-// The connection is now available as $conn
+// The connection is now available as $conn
 ?>
