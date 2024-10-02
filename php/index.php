@@ -48,6 +48,82 @@
         
     </div>
 
+    <div class="home_page_main_container">
+        <!-- Hero Section -->
+        <section class="hero_section">
+            <div class="hero_text_container">
+                <h1 class="hero_title">16,780 Jobs For You</h1>
+                <p class="hero_subtitle">Find your dream job that matches your passion and skills.</p>
+                <a href="#" class="explore_button">Explore Now</a>
+            </div>
+            <div class="hero_image">
+                <!-- Placeholder for image -->
+                <img src="hero_image_placeholder.jpg" alt="Jobs Map">
+            </div>
+        </section>
+
+        <!-- Jobs Search Section -->
+        <section class="job_search_section">
+            <h2 class="section_title">Explore more jobs</h2>
+            <div class="search_filter_container">
+                <input type="text" placeholder="Search for jobs..." class="search_input">
+                <select class="location_filter">
+                    <option value="">Location</option>
+                    <!-- Add more locations as options -->
+                </select>
+                <button class="search_button">Search</button>
+            </div>
+
+            <!-- Job Categories -->
+            <div class="job_categories_container">
+                <div class="category_box">
+                    <span class="category_icon">$</span>
+                    <h3>Finance</h3>
+                    <p>1237 jobs</p>
+                </div>
+                <div class="category_box">
+                    <span class="category_icon">👨‍🏫</span>
+                    <h3>Education</h3>
+                    <p>3546 jobs</p>
+                </div>
+                <div class="category_box">
+                    <span class="category_icon">💻</span>
+                    <h3>IT</h3>
+                    <p>5768 jobs</p>
+                </div>
+                <div class="category_box">
+                    <span class="category_icon">📊</span>
+                    <h3>Marketing</h3>
+                    <p>2473 jobs</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Listings Section -->
+        <section class="job_listings_section">
+            <!-- Single Job Card -->
+            <div class="job_card">
+                <div class="job_image_container">
+                    <img src="job_image_placeholder.jpg" alt="Job Image">
+                </div>
+                <div class="job_details_container">
+                    <h3 class="job_title">UI/UX Designer</h3>
+                    <p class="job_salary">$95K - $120K</p>
+                    <p class="job_location">Tucson, AZ</p>
+                    <p class="job_type">Onsite</p>
+                    <div class="job_tags">
+                        <span class="tag">Tag 1</span>
+                        <span class="tag">Tag 2</span>
+                        <span class="tag">Tag 3</span>
+                    </div>
+                    <button class="apply_button">Apply</button>
+                </div>
+            </div>
+
+            <!-- Add more job cards here -->
+        </section>
+    </div>
+
         <?php
         include_once 'footer.php';
         ?>
