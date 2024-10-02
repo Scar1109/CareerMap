@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once './includes/dbh.inc.php';  // Include the database connection file
+require_once './includes/config.php';  // Include the database connection file
 
 // Enable error reporting for debugging
 error_reporting(E_ALL);
@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Update user information in the database
     $sql = "UPDATE users SET first_name = ?, last_name = ?, username = ?, email = ?, phone_number = ?, description = ? WHERE id = ?";
     
-    $stmt = mysqli_stmt_init($conn);
+    $stmt = mysqli_stmt_init($con);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        $error = "SQL prepare error: " . mysqli_error($conn);
+        $error = "SQL prepare error: " . mysqli_error($con);
         error_log($error);
         header("Location: profile.php?update=error&message=" . urlencode($error));
         exit();
@@ -75,5 +75,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
-mysqli_close($conn);
+mysqli_close($con);
 ?>
