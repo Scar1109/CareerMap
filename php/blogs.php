@@ -25,14 +25,16 @@
 
         <div class="blog_grid_container_004">
             <!-- Blog post cards -->
-            <div class="blog_card_005">
-                <div class="blog_date_006">23 JUN 2024</div>
-                <div class="blog_image_007">Image</div>
-                <div class="blog_description_008">
-                    <h3>Pro Strategies To Showcase Your Resume and Get the Job</h3>
-                    <p>The tech industry is one of the fastest-growing industries, creating a wealth of opportunities for job seekers. However, with these great chances comes increased competition. Whether you are a recent graduate or experienced professional, these strategies will help you succeed.</p>
+            <a href="../php/blogView.php" class="blog_card_link_009">
+                <div class="blog_card_005">
+                    <div class="blog_date_006">23 JUN 2024</div>
+                    <div class="blog_image_007">Image</div>
+                    <div class="blog_description_008">
+                        <h3>Pro Strategies To Showcase Your Resume and Get the Job</h3>
+                        <p>The tech industry is one of the fastest-growing industries, creating a wealth of opportunities for job seekers. However, with these great chances comes increased competition. Whether you are a recent graduate or experienced professional, these strategies will help you succeed.</p>
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <div class="blog_card_005">
                 <div class="blog_date_006">23 JUN 2024</div>

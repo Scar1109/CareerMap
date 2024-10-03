@@ -1,14 +1,14 @@
 <?php
-
-$serverName = "localhost";
-$username = "root";
-$password = "";
-$dbName = "careermap";
+$servername = "localhost";
+$username = "root";  // Replace with your MySQL username
+$password = "";  // Replace with your MySQL password
+$dbname = "careermap";  // Replace with your database name
 
 // Create connection
-$con = new mysqli($serverName, $username, $password, $dbName);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+?>

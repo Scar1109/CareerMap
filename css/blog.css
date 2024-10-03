@@ -288,4 +288,108 @@ body {
     background-color: #333;
 }
 
+/* Blog View page */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+
+.blog_view_container_001 {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Blog Date */
+.blog_date_container_002 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.blog_date_003 {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Blog Image */
+.blog_image_container_004 {
+    width: 75%;
+    height: auto;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Horizontal centering */
+}
+
+.blog_image_005 {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Blog Title */
+.blog_title_006 {
+    font-size: 2em;
+    font-family: 'Cursive', sans-serif; /* Handwritten style */
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Blog Content */
+.blog_content_007 {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.blog_content_007 p {
+    margin-bottom: 20px;
+}
+
+/* Buttons for Edit and Delete */
+.blog_buttons_container_008 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.edit_button_009, .delete_button_010 {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.edit_button_009 {
+    background-color: #000;
+    color: #fff;
+}
+
+.edit_button_009:hover {
+    background-color: #444;
+}
+
+.delete_button_010 {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.delete_button_010:hover {
+    background-color: #c0392b;
+}
