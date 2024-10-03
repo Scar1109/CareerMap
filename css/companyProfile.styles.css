@@ -69,6 +69,9 @@
     background-color: #767d85;
     border: none;
     cursor: pointer;
+    height: 40px !important;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 
@@ -77,11 +80,14 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    height: 40px !important;
 }
 
 .CP_follow-btn {
     background-color: #767d85;
     color: white;
+     height: 40px;
+
 }
 
 .CP_share-btn {

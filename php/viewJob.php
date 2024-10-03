@@ -109,14 +109,18 @@ function time_elapsed_string($datetime, $full = false) {
             </div>
         </div>
     </section>
-
     <section class="JB_company-details">
-        <h3>About Company</h3>
-        <div class="JB_company-info">
-            <div class="JB_company-name"><?php echo htmlspecialchars($job['company_name']); ?></div>
-            <p><?php echo htmlspecialchars($job['company_location']); ?></p>
+    <h3>About Company</h3>
+    <div class="JB_company-info">
+        <div class="JB_company-name">
+            <a href="companyProfile.php?company_id=<?php echo htmlspecialchars($job['user_id']); ?>">
+                <?php echo htmlspecialchars($job['company_name']); ?>
+            </a>
         </div>
-    </section>
+        <p><?php echo htmlspecialchars($job['company_location']); ?></p>
+    </div>
+</section>
+
 </div>
 
 <?php include_once 'footer.php'; ?>
