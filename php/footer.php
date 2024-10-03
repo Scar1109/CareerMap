@@ -21,7 +21,7 @@
                     <h4>Our Services</h4>
                         <ul>
                             <li><a href="#">Apply for a job</a></li>
-                            <li><a href="#">Post a job</a></li>
+                            <li><a href="createJob.php">Post a job</a></li>
                             <li><a href="#">Create job profile</a></li>
                             <li><a href="#">Blogs</a></li>
                         </ul>

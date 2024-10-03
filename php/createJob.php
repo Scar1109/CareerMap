@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/job.styles.css">
     <title>Create Job</title>
+    <style>
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none; /* Initially hidden */
+        }
+    </style>
 </head>
 <body class="JB_body">
 <?php
     include_once 'header.php';
 ?>
+
+    <div class="success-message" id="successMessage">Job created successfully!</div>
+
     <div class="JB_form-container">
     <h1 class="JB_heading">Create a Job</h1>
     <form action="../php/includes/createJob.inc.php" method="POST" class="JB_form" enctype="multipart/form-data">
@@ -26,9 +40,6 @@
         <label for="JB_salary" class="JB_label">Salary</label>
         <input type="number" id="JB_salary" name="salary" class="JB_input" placeholder="Enter salary (e.g., 50000)" required><br>
 
-        <label for="JB_company_id" class="JB_label">Company ID</label>
-        <input type="number" id="JB_company_id" name="company_id" class="JB_input" placeholder="Enter company ID" required><br>
-
         <label for="JB_company_image" class="JB_label">Company Image</label>
         <input type="text" id="JB_company_image" name="company_image" class="JB_input" placeholder="Enter company Image Url" required><br>
 
@@ -38,5 +49,16 @@
 <?php
     include_once 'footer.php';
 ?>
+
+<script>
+    // Check if 'success' is in the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success') && urlParams.get('success') === '1') {
+        // Show the success message using JavaScript
+        const successMessage = document.getElementById('successMessage');
+        successMessage.style.display = 'block';
+    }
+</script>
+
 </body>
 </html>
