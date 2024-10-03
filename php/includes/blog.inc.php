@@ -1,53 +1,67 @@
 <?php
-// Include your database connection file
-include 'dbh.inc.php'; // Assuming this file contains your database connection
+// Include the database connection file
+include 'config.php'; // This is your config.php file with the database connection
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Define the directory to upload the images
-    $uploadDir = 'uploads/';
-    
-    // Get the form data
+    // Define the directory to upload images (corrected path)
+    $uploadDir = __DIR__ . '/../../uploads/';  // Correct path to the uploads folder
+
+    // Check if the directory exists; if not, create it
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);  // Create the directory with the correct permissions
+    }
+
+    // Retrieve the form data
     $blogTitle = $_POST['blog_title'];
     $blogDate = $_POST['blog_date'];
     $blogDescription = $_POST['blog_description'];
 
-    // Handle the image upload
-    $fileName = basename($_FILES["blog_image"]["name"]);
-    $targetFilePath = $uploadDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    // Handle image upload
+    if (isset($_FILES['blog_image']) && $_FILES['blog_image']['error'] === 0) {
+        $image = $_FILES['blog_image'];
+        $imageName = $image['name'];
+        $imageTmpName = $image['tmp_name'];
+        $imageSize = $image['size'];
+        $imageError = $image['error'];
 
-    // Allowed file types for image upload
-    $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+        // Allowed image types
+        $allowed = array('jpg', 'jpeg', 'png', 'gif');
 
-    // Check if the uploaded file is a valid image type
-    if (in_array($fileType, $allowedTypes)) {
-        // Move the uploaded file to the target directory
-        if (move_uploaded_file($_FILES["blog_image"]["tmp_name"], $targetFilePath)) {
-            // Insert the blog data into the database
-            $sql = "INSERT INTO blogs (title, date, description, image_path) VALUES (?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
+        $imageExt = explode('.', $imageName);
+        $imageActualExt = strtolower(end($imageExt));
 
-            if ($stmt) {
-                $stmt->bind_param("ssss", $blogTitle, $blogDate, $blogDescription, $targetFilePath);
+        if (in_array($imageActualExt, $allowed)) {
+            if ($imageError === 0) {
+                if ($imageSize < 1000000) { // Check if file size is less than 1MB
+                    $imageNewName = uniqid('', true) . "." . $imageActualExt;
+                    $imageDestination = $uploadDir . $imageNewName;
 
-                if ($stmt->execute()) {
-                    echo "Blog successfully added!";
+                    // Debug output to verify path
+                    echo "Temp file: " . $imageTmpName . "<br>";
+                    echo "Destination: " . $imageDestination . "<br>";
+
+                    if (!is_writable($uploadDir)) {
+                        echo "Error: The upload directory is not writable.<br>";
+                        exit();
+                    }
+
+                    // Try moving the uploaded file
+                    if (move_uploaded_file($imageTmpName, $imageDestination)) {
+                        echo "File uploaded successfully!<br>";
+                        // Continue with database insertion (omit for now)
+                    } else {
+                        echo "Sorry, there was an error moving the uploaded file.<br>";
+                    }
                 } else {
-                    echo "Error: " . $stmt->error;
+                    echo "Your file is too big! Maximum size is 1MB.<br>";
                 }
-
-                $stmt->close();
             } else {
-                echo "Error: " . $conn->error;
+                echo "There was an error uploading your file! Error code: " . $imageError . "<br>";
             }
         } else {
-            echo "Sorry, there was an error uploading your image.";
+            echo "You cannot upload files of this type!<br>";
         }
     } else {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        echo "No image file was uploaded or there was an error.<br>";
     }
-
-    // Close the database connection
-    $conn->close();
 }
-?>

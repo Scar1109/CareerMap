@@ -16,7 +16,8 @@
 
 
 <div class="add_blog_container_001">
-        <form action="submit_blog.php" method="POST" enctype="multipart/form-data">
+        <!-- Update the form action to point to addblog.inc.php in the /php/ folder -->
+        <form action="../php/includes/blog.inc.php" method="POST" enctype="multipart/form-data">
             <h2 class="form_title_002">ADD BLOGS</h2>
 
             <div class="image_upload_container_003">
