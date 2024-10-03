@@ -1,15 +1,16 @@
 <?php
+session_start();
 include_once 'includes/config.php';
 
 // Get the job ID from the URL or default to 2 for testing purposes
-$job_id = isset($_GET['job_id']) ? (int)$_GET['job_id'] : 8;
+$job_id = isset($_GET['job_id']) ? (int)$_GET['job_id'] : 12;
 
 if ($job_id > 0) {
     // Fetch job details from the database
     $sql = "SELECT jobs.id, jobs.title, jobs.description, jobs.salary, jobs.location, jobs.created_at, jobs.image,
-            companies.name AS company_name, companies.location AS company_location 
+            jobs.user_id, companies.name AS company_name, companies.location AS company_location 
             FROM jobs 
-            JOIN companies ON jobs.company_id = companies.id 
+            JOIN companies ON jobs.user_id = companies.id 
             WHERE jobs.id = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $job_id);
@@ -71,11 +72,21 @@ function time_elapsed_string($datetime, $full = false) {
     <section class="JB_job-details">
         <div class="JB_job-header">
             <img src="https://www.gloryassumptionspace.com/wp-content/uploads/2021/01/apply.jpg" class="JB_job-image">
-            <!-- Uncomment the line below to use a dynamic image from the database -->
-            <!-- <img src="../images/<?php echo htmlspecialchars($job['image']); ?>" alt="<?php echo htmlspecialchars($job['title']); ?>" class="JB_job-image"> -->
             <div class="JB_job-title">
                 <div><h2><?php echo htmlspecialchars($job['title']); ?></h2></div> 
-                <div><a href="applyJob.php?job_id=<?php echo $job['id']; ?>" class="JB_apply-btn">Apply</a></div>
+                <div class="JB_job-buttons">
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin' && $job['user_id'] == $_SESSION['userid']): ?>
+                        <div><a href="editJob.php?job_id=<?php echo $job['id']; ?>" class="JB_apply-btn">Edit</a></div>
+                        <form action="../php/includes/deleteJob.inc.php" method="POST">
+                            <input type="hidden" name="job_id" value="<?php echo $job['id']; ?>">
+                            <button type="submit" class="JB_delete-btn" onclick="return confirm('Are you sure you want to delete this job?');">Delete</button>
+                        </form>
+
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'user'): ?>
+                        <div><a href="applyJob.php?job_id=<?php echo $job['id']; ?>" class="JB_apply-btn">Apply</a></div>
+                    <?php endif; ?>
+                </div>
             </div>
             <span class="JB_salary">RS: <?php echo htmlspecialchars(number_format($job['salary'])); ?> - RS: <?php echo htmlspecialchars(number_format($job['salary'] * 1.2)); ?></span>
             <span class="JB_location"><?php echo htmlspecialchars($job['location']); ?></span>
@@ -89,12 +100,12 @@ function time_elapsed_string($datetime, $full = false) {
             </div>
 
             <div class="JB_responsibilities">
-            <h3>Responsibilities</h3>
-                    <ul>
-                        <li>Collaborate with cross-functional teams to define, design, and ship new features.</li>
-                        <li>Maintain high code quality through regular testing and reviewing processes.</li>
-                        <li>Analyze and optimize performance for scalability and stability of the system.</li>
-                    </ul>
+                <h3>Responsibilities</h3>
+                <ul>
+                    <li>Collaborate with cross-functional teams to define, design, and ship new features.</li>
+                    <li>Maintain high code quality through regular testing and reviewing processes.</li>
+                    <li>Analyze and optimize performance for scalability and stability of the system.</li>
+                </ul>
             </div>
         </div>
     </section>
