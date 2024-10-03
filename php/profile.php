@@ -191,10 +191,9 @@ if (isset($_GET['update']) && $_GET['update'] == 'success') {
         </form>
             
         <div class="developer-section">
-            <div class="developer-image">Image</div>
             <h3>If You Want To Be A Developer</h3>
             <p>Upgrade your account to access developer features</p>
-            <button class="full-width-button">Upgrade To Developer Account</button>
+            <a href="viewMyDeveloper.php"><button class="full-width-button">Upgrade To Developer Account</button></a>
         </div>
     </div>
 

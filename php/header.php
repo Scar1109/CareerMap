@@ -24,10 +24,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
     if (isset($_SESSION["username"])) {
         echo '
         <div class="user-dropdown">
-            <a href="userAcc.php" class="loggedInUser">
+            <a href="profile.php" class="loggedInUser">
                 <i class="fa fa-user-circle-o" style="font-size:36px"></i>
             </a>
-            <a href="userAcc.php" class="loggedInUserText">
+            <a href="profile.php" class="loggedInUserText">
                 <p>' . htmlspecialchars($_SESSION["username"]) . '</p> <!-- Display the username safely -->
             </a>
             <div class="user-dropdown-content">
