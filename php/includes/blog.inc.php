@@ -1,67 +1,75 @@
 <?php
-// Include the database connection file
-include 'config.php'; // This is your config.php file with the database connection
+session_start(); // Make sure the session is started to access session variables
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Define the directory to upload images (corrected path)
-    $uploadDir = __DIR__ . '/../../uploads/';  // Correct path to the uploads folder
+// Include your database configuration
+include_once 'config.php';
 
-    // Check if the directory exists; if not, create it
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true);  // Create the directory with the correct permissions
-    }
+// Check if the user is logged in
+if (!isset($_SESSION['userid'])) {
+    // Redirect to login page if not logged in
+    header("Location: login.php");
+    exit();
+}
 
-    // Retrieve the form data
+// Get user_id from session
+$user_id = $_SESSION['userid'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Default image in case no image is uploaded
+    $image = "defaultImg.png";
+
+    // Get form data
     $blogTitle = $_POST['blog_title'];
     $blogDate = $_POST['blog_date'];
     $blogDescription = $_POST['blog_description'];
+    $created_at = date('Y-m-d H:i:s'); // Set the current timestamp
 
-    // Handle image upload
+    // Check if an image is uploaded
     if (isset($_FILES['blog_image']) && $_FILES['blog_image']['error'] === 0) {
         $image = $_FILES['blog_image'];
         $imageName = $image['name'];
         $imageTmpName = $image['tmp_name'];
-        $imageSize = $image['size'];
-        $imageError = $image['error'];
-
-        // Allowed image types
+        $imageExt = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
         $allowed = array('jpg', 'jpeg', 'png', 'gif');
 
-        $imageExt = explode('.', $imageName);
-        $imageActualExt = strtolower(end($imageExt));
+        // Check if file type is allowed
+        if (in_array($imageExt, $allowed)) {
+            // Generate a new unique name for the image
+            $imageNewName = uniqid('', true) . "." . $imageExt;
+            $imageDestination = '../../uploads/' . $imageNewName;
 
-        if (in_array($imageActualExt, $allowed)) {
-            if ($imageError === 0) {
-                if ($imageSize < 1000000) { // Check if file size is less than 1MB
-                    $imageNewName = uniqid('', true) . "." . $imageActualExt;
-                    $imageDestination = $uploadDir . $imageNewName;
-
-                    // Debug output to verify path
-                    echo "Temp file: " . $imageTmpName . "<br>";
-                    echo "Destination: " . $imageDestination . "<br>";
-
-                    if (!is_writable($uploadDir)) {
-                        echo "Error: The upload directory is not writable.<br>";
-                        exit();
-                    }
-
-                    // Try moving the uploaded file
-                    if (move_uploaded_file($imageTmpName, $imageDestination)) {
-                        echo "File uploaded successfully!<br>";
-                        // Continue with database insertion (omit for now)
-                    } else {
-                        echo "Sorry, there was an error moving the uploaded file.<br>";
-                    }
-                } else {
-                    echo "Your file is too big! Maximum size is 1MB.<br>";
-                }
+            // Move the file to the uploads directory
+            if (move_uploaded_file($imageTmpName, $imageDestination)) {
+                $image = $imageNewName; // Set image path to the uploaded file name
             } else {
-                echo "There was an error uploading your file! Error code: " . $imageError . "<br>";
+                echo "Error uploading the image.";
+                exit();
             }
         } else {
-            echo "You cannot upload files of this type!<br>";
+            echo "Invalid file type.";
+            exit();
         }
-    } else {
-        echo "No image file was uploaded or there was an error.<br>";
     }
+
+    // Prepare SQL query
+    $sql = "INSERT INTO blogs (title, date, description, image_path, user_id, created_at) 
+            VALUES (?, ?, ?, ?, ?, ?)";
+
+    // Prepare and execute statement
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("ssssss", $blogTitle, $blogDate, $blogDescription, $image, $user_id, $created_at);
+
+    if ($stmt->execute()) {
+        // Redirect to the form page with a success message flag
+        header("Location: ../blogs.php?success=1");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $con->close();
+} else {
+    echo "Invalid request method.";
 }
