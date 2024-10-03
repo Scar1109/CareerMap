@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'includes/config.php';  // Include your database connection
 
 // Check if the user is logged in
 if (!isset($_SESSION["userid"])) {
@@ -16,6 +17,7 @@ $lastName = $_SESSION["last_name"] ?? '';
 $email = $_SESSION["email"] ?? '';
 $phoneNumber = $_SESSION["phone_number"] ?? '';
 $description = $_SESSION["description"] ?? '';
+$role = $_SESSION["role"] ?? '';
 
 // Check for update success message
 $updateMessage = '';
@@ -23,6 +25,24 @@ if (isset($_GET['update']) && $_GET['update'] == 'success') {
     $updateMessage = "Profile updated successfully!";
 }
 
+// Check if there is a company profile for the current user
+$companyExists = false;
+$companyId = '';  // Store the company ID for the current user
+
+$sql = "SELECT id FROM companies WHERE userId = ?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    // Fetch the company ID for the logged-in user
+    $company = $result->fetch_assoc();
+    $companyId = $company['id'];
+    $companyExists = true;
+}
+
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +86,21 @@ if (isset($_GET['update']) && $_GET['update'] == 'success') {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            margin: 0; 
+        }
+
+        .view-company-button {
+            display: block;
+            width: 30%;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 20px;
         }
         .tag {
             display: inline-block;
@@ -106,6 +141,13 @@ if (isset($_GET['update']) && $_GET['update'] == 'success') {
             font-size: 16px;
         }
         .developer-section {
+            text-align: center;
+            margin: 40px 0;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .company-section {
             text-align: center;
             margin: 40px 0;
             background-color: white;
@@ -157,6 +199,11 @@ if (isset($_GET['update']) && $_GET['update'] == 'success') {
                 <span class="tag">Tag</span>
                 <span class="tag">Tag</span>
             </div>
+
+            <?php if ($companyExists): ?>
+                <!-- View Company Profile button appears only if the user has a company profile -->
+                <a href="companyProfile.php?company_id=<?= $companyId ?>"><button class="view-company-button">View Company Profile</button></a>
+            <?php endif; ?>
         </div>
 
         <form class="general-info" action="update_profile.php" method="POST">
@@ -190,11 +237,23 @@ if (isset($_GET['update']) && $_GET['update'] == 'success') {
             <button type="submit" class="full-width-button">Update Profile</button>
         </form>
             
-        <div class="developer-section">
-            <h3>If You Want To Be A Developer</h3>
-            <p>Upgrade your account to access developer features</p>
-            <a href="viewMyDeveloper.php"><button class="full-width-button">Upgrade To Developer Account</button></a>
-        </div>
+        <!-- Only display developer-section if role is 'user' -->
+        <?php if ($role == 'user'): ?>
+            <div class="developer-section">
+                <h3>If You Want To Be A Developer</h3>
+                <p>Upgrade your account to access developer features</p>
+                <a href="viewMyDeveloper.php"><button class="full-width-button">Upgrade To Developer Account</button></a>
+            </div>
+        <?php endif; ?>
+
+        <!-- Only display company-section if role is 'admin' -->
+        <?php if ($role == 'admin'): ?>
+            <div class="company-section">
+                <h3>Create Or Edit Your Company Profile</h3>
+                <p>Fill in all missing details about your company</p>
+                <a href="createCompany.php"><button class="full-width-button">Create Or Edit Company Profile</button></a>
+            </div>
+        <?php endif; ?>
     </div>
 
     <?php include_once 'footer.php'; ?>
