@@ -97,7 +97,7 @@ $role = $_SESSION['role'] ?? ''; // Fetch the user role from the session
 
     </section>
 
-    <?php if ($role === 'admin'): // Show this section only to admin users ?>
+    <?php if ($role === 'employer'): // Show this section only to employer users ?>
     <section class="CP_recent-jobs">
         <h2>Recent Job Applicant</h2>
         <div class="CP_jobs-list">

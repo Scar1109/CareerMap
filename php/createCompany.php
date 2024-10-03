@@ -105,7 +105,7 @@ if (  $userId) {  // Corrected the condition
 <body>
     <?php include_once 'header.php'; ?>
 
-    <?php if ($role == 'admin'): ?>
+    <?php if ($role == 'employer'): ?>
         <div class="CP_container">
             <section class="CP_profile-section">
                 <h1 class="CP_heading"><?= $companyId ? 'Edit' : 'Create' ?> Company Profile</h1>
