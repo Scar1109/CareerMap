@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
     $password = $_POST["password"];
 
     // Check if the user exists and login the user
-    loginUser($conn, $username, $password);
+    loginUser($con, $username, $password);
 
 } else {
     header("Location: ../login.php");
