@@ -1,8 +1,10 @@
 <?php
-include_once 'includes/config.php';
+session_start();
+include_once 'includes/config.php';  // Ensure you have a proper session and connection setup
 
 // Assuming the company ID is passed via URL
 $company_id = isset($_GET['company_id']) ? (int)$_GET['company_id'] : 1;
+$userId = $_SESSION['userid'] ?? '';  // Fetch logged-in user ID from session
 
 if ($company_id > 0) {
     // Fetch company details
@@ -51,7 +53,7 @@ if ($company_id > 0) {
     <section class="CP_profile-section">
         <div class="CP_profile-header">
             <div class="CP_company-logo">
-                <img src="https://via.placeholder.com/100" alt="Company Logo">
+                <img src="https://png.pngtree.com/png-vector/20221013/ourmid/pngtree-company-profile-iconflat-design-different-illustration-crowd-vector-png-image_20180366.png" alt="Company Logo">
             </div>
             <div class="CP_company-info">
                 <h1><?php echo htmlspecialchars($company['name']); ?></h1>
@@ -63,10 +65,22 @@ if ($company_id > 0) {
                 </div>
             </div>
         </div>
+
+        <?php if ($company['userId'] == $userId): // Show Edit/Delete buttons only if the logged-in user owns the company ?>
         <div class="CP_social-actions">
-            <button class="CP_follow-btn">Edit</button>
-            <button class="CP_share-btn">Delete</button>
+            <!-- Edit Button: Redirect to createCompany.php with the company_id as a query parameter -->
+            <a href="createCompany.php?company_id=<?= $company_id ?>" class="CP_follow-btn" class="CP_follow-btn">
+                <button type="button" class="CP_follow-button" >Edit</button>
+            </a>
+
+            <!-- Delete Button: Submitting a POST request to deleteCompany.inc.php -->
+            <form action="../php/includes/deleteCompany.inc.php" method="POST" style="display:inline;">
+                <input type="hidden" name="company_id" value="<?= htmlspecialchars($company_id) ?>">
+                <button type="submit" class="CP_share-btn" onclick="return confirm('Are you sure you want to delete this company?');">Delete</button>
+            </form>
         </div>
+        <?php endif; ?>
+
     </section>
 
     <section class="CP_about-us">
