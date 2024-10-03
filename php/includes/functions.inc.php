@@ -119,7 +119,7 @@ function createUser($con, $first_name, $last_name, $username, $email, $password,
     if ($role === 'user') {
         header("Location: ../index.php?signup=success");
     } elseif ($role === 'employee') {
-        header("Location: ../employee_dashboard.php?signup=success"); 
+        header("Location: ../index.php?signup=success"); 
     } else {
         header("Location: ../index.php");
     }
