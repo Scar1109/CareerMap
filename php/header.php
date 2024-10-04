@@ -49,7 +49,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 <ul class="headerNav">
     <li <?php if($current_page === 'index.php') echo ' class="active"'; ?>><a href="index.php">Home</a></li>
-    <li <?php if($current_page === 'applications.php') echo ' class="active"'; ?>><a href="applications.php">Applications</a></li>
     <li <?php if($current_page === 'developers.php') echo ' class="active"'; ?>><a href="developers.php">Developers</a></li>
     <li <?php if($current_page === 'blogs.php') echo ' class="active"'; ?>><a href="blogs.php">Blogs</a></li>
     <li <?php if($current_page === 'aboutUs.php') echo ' class="active"'; ?>><a href="aboutUs.php">About Us</a></li>
