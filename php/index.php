@@ -17,7 +17,7 @@
     <!--slide show -->
     <!--slide show -->
 
-    <div class="slideshow">
+    <!-- <div class="slideshow">
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <img src="../images/1.svg" style="width:100%; height:auto;" >
@@ -45,7 +45,7 @@
                 <span class="dot" onclick="currentSlide(5)"></span> 
         </div>
         
-    </div>
+    </div> -->
 
     <div class="home_page_main_container">
         <!-- Hero Section -->
