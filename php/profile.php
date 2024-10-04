@@ -66,7 +66,7 @@ $stmt->close();
         }
         .profile-header {
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 0 0 0;
             background-color: white;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -102,13 +102,6 @@ $stmt->close();
             display: inline-block;
             margin-top: 20px;
         }
-        .tag {
-            display: inline-block;
-            background-color: #eee;
-            padding: 5px 10px;
-            border-radius: 20px;
-            margin: 0 5px;
-        }
         .general-info {
             background-color: white;
             padding: 20px;
@@ -133,12 +126,27 @@ $stmt->close();
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #333;
+            background-color: #1d64c2;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+        }
+
+        .full-width-button:hover {
+            background-color: #1555a7;
+        }
+
+        .application-section {
+            text-align: center;
+            background-color: white;
+            padding: 0 20px 20px 20px;
+            border-radius: 8px;
+        }
+        .application-section h3 {
+            margin-top: 0;
+            font-size: 15px;
         }
         .developer-section {
             text-align: center;
@@ -146,6 +154,9 @@ $stmt->close();
             background-color: white;
             padding: 20px;
             border-radius: 8px;
+        }
+        .developer-section a {
+            text-decoration: none;
         }
         .company-section {
             text-align: center;
@@ -194,11 +205,13 @@ $stmt->close();
             </div>
             <h1><?= htmlspecialchars($firstName . ' ' . $lastName) ?></h1>
             <p>User ID: <?= htmlspecialchars($userId) ?></p>
-            <div>
-                <span class="tag">Tag</span>
-                <span class="tag">Tag</span>
-                <span class="tag">Tag</span>
+
+            <?php if ($role == 'user'): ?>
+            <div class="application-section">
+                <h3>Your Applications</h3>
+                <a href="applicationList.php"><button class="full-width-button">Applications</button></a>
             </div>
+        <?php endif; ?>
 
             <?php if ($companyExists): ?>
                 <!-- View Company Profile button appears only if the user has a company profile -->
