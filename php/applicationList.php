@@ -12,7 +12,6 @@ if (!isset($_SESSION['userid'])) {
 
 $user_id = $_SESSION['userid']; // Get the logged-in user's ID
 
-// Handle Delete Request
 if (isset($_GET['delete'])) {
     $application_id = $_GET['delete'];
 
@@ -20,14 +19,23 @@ if (isset($_GET['delete'])) {
     $sql = "DELETE FROM applications WHERE id = ? AND user_id = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("ii", $application_id, $user_id);
-    
+
     if ($stmt->execute()) {
-        header("Location: applicationList.php?success=applicationdeleted");
+        // Display success alert and reload the page
+        echo '<script>
+                alert("Application deleted successfully.");
+                window.location.href = "applicationList.php";
+              </script>';
     } else {
-        header("Location: applicationList.php?error=deletionfailed");
+        // Display error alert
+        echo '<script>
+                alert("Error deleting the application.");
+                window.location.href = "applicationList.php";
+              </script>';
     }
     exit();
 }
+
 
 // Handle Edit Request (Form submission)
 if (isset($_POST['submit'])) {
@@ -38,7 +46,7 @@ if (isset($_POST['submit'])) {
 
     // Resume file upload handling
     if (!empty($resume)) {
-        $resumePath = 'uploads/' . basename($resume);
+        $resumePath = '../uploads/' . basename($resume);
         move_uploaded_file($_FILES['resume']['tmp_name'], $resumePath);
     } else {
         $resumePath = $_POST['existing_resume'];
@@ -48,11 +56,19 @@ if (isset($_POST['submit'])) {
     $sql = "UPDATE applications SET name = ?, email = ?, resume = ? WHERE id = ? AND user_id = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("sssii", $name, $email, $resumePath, $application_id, $user_id);
-    
+
     if ($stmt->execute()) {
-        header("Location: applicationList.php?success=applicationupdated");
+        // Display success alert and reload the page
+        echo '<script>
+                alert("Application updated successfully.");
+                window.location.href = "applicationList.php";
+              </script>';
     } else {
-        header("Location: applicationList.php?error=updatefailed");
+        // Display error alert and reload the page
+        echo '<script>
+                alert("Error updating the application.");
+                window.location.href = "applicationList.php";
+              </script>';
     }
     exit();
 }
@@ -67,12 +83,14 @@ $result = $stmt->get_result();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Applications</title>
     <link rel="stylesheet" href="../css/applicationlist.styles.css">
 </head>
+
 <body>
 
     <?php include_once 'header.php'; ?>
@@ -145,6 +163,7 @@ $result = $stmt->get_result();
     <?php include_once 'footer.php'; ?>
 
 </body>
+
 </html>
 
 <?php
