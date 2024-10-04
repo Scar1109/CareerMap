@@ -246,8 +246,8 @@ $stmt->close();
             </div>
         <?php endif; ?>
 
-        <!-- Only display company-section if role is 'admin' -->
-        <?php if ($role == 'admin'): ?>
+        <!-- Only display company-section if role is 'employer' -->
+        <?php if ($role == 'employer'): ?>
             <div class="company-section">
                 <h3>Create Or Edit Your Company Profile</h3>
                 <p>Fill in all missing details about your company</p>
