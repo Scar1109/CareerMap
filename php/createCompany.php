@@ -139,5 +139,6 @@ if (  $userId) {  // Corrected the condition
 
     <?php include_once 'footer.php'; ?>
 
+    <script src="../js/company.js"></script>
 </body>
 </html>
