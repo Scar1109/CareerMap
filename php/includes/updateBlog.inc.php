@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Execute the update query
     if ($stmt->execute()) {
         // Redirect to the blog view page after successful update
-        header("Location: ../blogView.php?id=$blogID");
+        header("Location: ../blogs.php?id=$blogID");
         exit();
     } else {
         echo "Error: " . $stmt->error;

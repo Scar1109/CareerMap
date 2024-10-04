@@ -52,7 +52,7 @@ if (isset($_POST['blog_id'])) {
             <input type="hidden" name="blog_id" value="<?= $blogID ?>">
 
             <div class="image_upload_container_003">
-                <label for="blogImage" class="image_upload_label_004">Update Image (optional)</label>
+                <label for="blogImage" class="image_upload_label_004">Update Image</label>
                 <div class="image_preview_005">
                     <!-- Existing image -->
                     <div id="existingImageContainer" style="display: block;">
@@ -86,13 +86,19 @@ if (isset($_POST['blog_id'])) {
             </div>
 
             <div class="form_buttons_011">
-                <button type="button" class="cancel_button_012">Cancel</button>
+            <button type="button" class="cancel_button_012" id="cancelButton">Cancel</button>
                 <button type="submit" class="edit_button_009">Update</button>
             </div>
         </form>
     </div>
 
     <script>
+        // Get the button element by its ID or class
+    document.getElementById("cancelButton").addEventListener("click", function() {
+        // Redirect to the desired page when the button is clicked
+        window.location.href = "../php/blogs.php";
+    });
+
         // JavaScript for image preview
         function previewImage(event) {
             const imagePreview = document.getElementById('imagePreview');
