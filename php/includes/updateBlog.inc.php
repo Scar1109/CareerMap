@@ -25,11 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['blog_image']) && $_FILES['blog_image']['error'] === 0) {
         $image = $_FILES['blog_image'];
         $imageName = uniqid() . '-' . basename($image['name']);
-        $imagePath = '../uploads/' . $imageName;
+        $uploadsDir = realpath(__DIR__ . '/../uploads'); // Corrected the path to uploads folder
+        $imagePath = $uploadsDir . '/' . $imageName;
 
         // Ensure the uploads folder is writable
-        if (!is_writable('../uploads')) {
-            echo "Upload directory is not writable.";
+        if (!is_writable($uploadsDir)) {
+            echo "Upload directory is not writable: " . $uploadsDir;
             exit();
         }
 
@@ -70,3 +71,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo "Invalid request method.";
 }
+?>

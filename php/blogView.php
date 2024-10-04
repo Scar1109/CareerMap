@@ -56,7 +56,7 @@ $con->close();
         
         <!-- Blog Image -->
         <div class="blog_image_container_007">
-            <img src="../uploads/<?= htmlspecialchars($blog['image_path']) ?>" alt="<?= htmlspecialchars($blog['title']) ?>" class="blog_image_005">
+            <img src="../uploads/<?= htmlspecialchars($blog['image_path']) ?>" alt="<?= htmlspecialchars($blog['title']) ?>" class="blog_view_page_img">
         </div>
         <h1 class="blog_title_006"><?= htmlspecialchars($blog['title']) ?></h1>
         <!-- Blog Description -->

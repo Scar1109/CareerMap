@@ -255,33 +255,6 @@ body {
     right: -11px; /* Position to the right of the carousel */
 }
 
-/* .job_categories_container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.category_box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 22%;
-    margin-bottom: 20px;
-}
-
-.category_icon {
-    font-size: 2em;
-}
-
-.category_box h3 {
-    margin: 10px 0;
-}
-
-.category_box p {
-    font-size: 1.1em;
-} */
-
 /* Job Listings */
 .job_listings_section {
     padding: 40px 0;

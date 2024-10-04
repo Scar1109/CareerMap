@@ -58,7 +58,7 @@ $result = $con->query($sql);
 
             <!-- Job Categories Carousel -->
             <div class="carousel_container_001">
-            <button class="carousel_btn_002 carousel_btn_left_003">&#8249;</button>
+            
                 <div class="carousel_items_wrapper_008">
                     <div class="carousel_items_004">
                         <div class="carousel_item_005">
@@ -98,12 +98,12 @@ $result = $con->query($sql);
                         </div>
                     </div>
                 </div>
-                <button class="carousel_btn_002 carousel_btn_right_007">&#8250;</button>
+                
             </div>
         </section>
 
-              <!-- Job Listings Section -->
-              <section class="job_listings_section">
+            <!-- Job Listings Section -->
+            <section class="job_listings_section">
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($job = $result->fetch_assoc()): ?>
                     <!-- Single Job Card -->
