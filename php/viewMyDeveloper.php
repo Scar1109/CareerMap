@@ -16,14 +16,12 @@
     include_once 'includes/config.php'; // Include DB connection
 
     // Check if the user is logged in
-    // if (!isset($_SESSION['user_id'])) {
-    //     header("Location: login.php"); // Redirect to login if not logged in
-    //     exit();
-    // }
+    if (!isset($_SESSION['userid'])) {
+        header("Location: login.php"); // Redirect to login if not logged in
+        exit();
+    }
 
-    // $user_id = $_SESSION['user_id'];
-
-    $user_id = 1; // Hardcoded user ID for testing
+    $user_id = $_SESSION['userid']; // Get the user ID from the session
 
     // Fetch the developer profile for the logged-in user
     $sql = "SELECT * FROM developers WHERE user_id = ?";

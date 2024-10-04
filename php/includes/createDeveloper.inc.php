@@ -4,14 +4,12 @@ include_once './config.php'; // Include database connection
 
 if (isset($_POST['submit'])) {
     // Check if the user is logged in and the session contains a user ID
-
-    $user_id = 1; // Remove this line after testing
-    // if (isset($_SESSION['user_id'])) {
-    //     $user_id = $_SESSION['user_id']; // Fetch the user ID from the session
-    // } else {
-    //     header("Location: login.php");
-    //     exit();
-    // }
+    if (isset($_SESSION['userid'])) {
+        $user_id = $_SESSION['userid']; // Fetch the user ID from the session
+    } else {
+        header("Location: login.php");
+        exit();
+    }
 
     // Get form data
     $fullname = $con->real_escape_string($_POST['fullname']);

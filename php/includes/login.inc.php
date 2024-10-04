@@ -57,8 +57,8 @@ function loginUser($conn, $username, $password) {
         if ($user["role"] === 'user') {
             header("Location: ../index.php");
             exit();
-        } elseif ($user["role"] === 'employee') {
-            header("Location: ../employee_dashboard.php");
+        } elseif ($user["role"] === 'employer') {
+            header("Location: ../companyProfile.php");
             exit();
         }
     }
