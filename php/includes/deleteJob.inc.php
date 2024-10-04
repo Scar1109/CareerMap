@@ -1,30 +1,40 @@
 <?php
-session_start(); // Start the session to access session variables
+session_start();
+include_once 'config.php'; // Include database connection
 
-// Include your database configuration
-include_once 'config.php';
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
+    $blogID = $_POST['blog_id'];
+    $loggedInUserID = $_SESSION['user_id'];
 
-// Check if the job_id is passed via POST request
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['job_id'])) {
-    $job_id = (int)$_POST['job_id'];
-
-    // Prepare SQL query to delete the job by its ID
-    $sql = "DELETE FROM jobs WHERE id = ?";
+    // Check if the blog belongs to the logged-in user before deleting
+    $sql = "SELECT * FROM blogs WHERE id = ? AND user_id = ?";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("i", $job_id);
+    $stmt->bind_param('ii', $blogID, $loggedInUserID);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if ($stmt->execute()) {
-        // Redirect to the jobs dashboard or another page with a success message
-        header("Location: ../index.php?delete=success");
-        exit();
+    // If the blog exists and belongs to the logged-in user
+    if ($result->num_rows > 0) {
+        // Proceed with deleting the blog
+        $sqlDelete = "DELETE FROM blogs WHERE id = ?";
+        $stmtDelete = $con->prepare($sqlDelete);
+        $stmtDelete->bind_param('i', $blogID);
+
+        if ($stmtDelete->execute()) {
+            header("Location: ../php/blogs.php?message=Blog deleted successfully");
+            exit();
+        } else {
+            echo "Error: " . $stmtDelete->error;
+        }
+
+        $stmtDelete->close();
     } else {
-        echo "Error: " . $stmt->error;
+        echo "You do not have permission to delete this blog.";
     }
 
     $stmt->close();
+    $con->close();
 } else {
-    echo "Invalid job ID!";
+    echo "Invalid blog ID or you are not logged in.";
 }
-
-$con->close();
 ?>
