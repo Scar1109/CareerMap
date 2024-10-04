@@ -52,7 +52,6 @@ if (isset($_POST['blog_id'])) {
             <input type="hidden" name="blog_id" value="<?= $blogID ?>">
 
             <div class="image_upload_container_003">
-                <label for="blogImage" class="image_upload_label_004">Update Image</label>
                 <div class="image_preview_005">
                     <!-- Existing image -->
                     <div id="existingImageContainer" style="display: block;">
