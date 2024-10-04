@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($stmt->execute()) {
             // Redirect after successful deletion
-            header("Location: profile.php?delete=success");
+            header("Location: ../profile.php?delete=success");
             exit();
         } else {
             echo "Error deleting company: " . $stmt->error;

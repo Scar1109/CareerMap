@@ -114,12 +114,13 @@ function createUser($con, $first_name, $last_name, $username, $email, $password,
     $_SESSION["last_name"] = $user['last_name'];
     $_SESSION["email"] = $user['email'];
     $_SESSION["phone_number"] = $user['phone_number'];
+    $_SESSION["role"] = $user['role'];
 
     // Redirect based on role
     if ($role === 'user') {
         header("Location: ../index.php?signup=success");
     } elseif ($role === 'employer') {
-        header("Location: ../companyProfile.php?signup=success"); 
+        header("Location: ../index.php?signup=success"); 
     } else {
         header("Location: ../index.php");
     }
