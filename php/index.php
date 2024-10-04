@@ -1,6 +1,3 @@
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +6,11 @@
 
     <!--change title icon-->
     <title>CareerMap</title>
+    
 </head>
 
 <body>
+    
     <?php
     include_once 'header.php';
     ?>
@@ -58,7 +57,7 @@
             </div>
             <div class="hero_image">
                 <!-- Placeholder for image -->
-                <img src="hero_image_placeholder.jpg" alt="Jobs Map">
+                <img src="https://i.ibb.co/zfy7w97/job-image.png" alt="Jobs" >
             </div>
         </section>
 
@@ -78,47 +77,47 @@
             <!-- Job Categories Carousel -->
             <div class="carousel_container_001">
             <button class="carousel_btn_002 carousel_btn_left_003">&#8249;</button>
-    <div class="carousel_items_wrapper_008">
-        <div class="carousel_items_004">
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">$</span>
-                <h3>Finance</h3>
-                <p>1237 jobs</p>
+                <div class="carousel_items_wrapper_008">
+                    <div class="carousel_items_004">
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">$</span>
+                            <h3>Finance</h3>
+                            <p>1237 jobs</p>
+                        </div>
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">👨‍🏫</span>
+                            <h3>Education</h3>
+                            <p>3546 jobs</p>
+                        </div>
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">💻</span>
+                            <h3>IT</h3>
+                            <p>5768 jobs</p>
+                        </div>
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">📊</span>
+                            <h3>Marketing</h3>
+                            <p>2473 jobs</p>
+                        </div>
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">🎨</span>
+                            <h3>Design</h3>
+                            <p>1024 jobs</p>
+                        </div>
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">⚖️</span>
+                            <h3>Legal</h3>
+                            <p>890 jobs</p>
+                        </div>
+                        <div class="carousel_item_005">
+                            <span class="carousel_icon_006">🛠</span>
+                            <h3>Engineering</h3>
+                            <p>2219 jobs</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel_btn_002 carousel_btn_right_007">&#8250;</button>
             </div>
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">👨‍🏫</span>
-                <h3>Education</h3>
-                <p>3546 jobs</p>
-            </div>
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">💻</span>
-                <h3>IT</h3>
-                <p>5768 jobs</p>
-            </div>
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">📊</span>
-                <h3>Marketing</h3>
-                <p>2473 jobs</p>
-            </div>
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">🎨</span>
-                <h3>Design</h3>
-                <p>1024 jobs</p>
-            </div>
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">⚖️</span>
-                <h3>Legal</h3>
-                <p>890 jobs</p>
-            </div>
-            <div class="carousel_item_005">
-                <span class="carousel_icon_006">🛠</span>
-                <h3>Engineering</h3>
-                <p>2219 jobs</p>
-            </div>
-        </div>
-    </div>
-    <button class="carousel_btn_002 carousel_btn_right_007">&#8250;</button>
-</div>
         </section>
 
         <!-- Job Listings Section -->
@@ -133,13 +132,13 @@
                     <p class="job_salary">$95K - $120K</p>
                     <p class="job_location">Tucson, AZ</p>
                     <p class="job_type">Onsite</p>
-                    <div class="job_tags">
+                </div>
+                <div class="job_tags">
                         <span class="tag">Tag 1</span>
                         <span class="tag">Tag 2</span>
                         <span class="tag">Tag 3</span>
                     </div>
                     <button class="apply_button">Apply</button>
-                </div>
             </div>
 
             <!-- Add more job cards here -->

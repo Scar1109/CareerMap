@@ -55,8 +55,6 @@ body {
 }
 
 .home_page_main_container {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
 }
 
@@ -65,9 +63,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 0;
-    width: 100%;
-    background-color: #fff;
+    padding: 40px ;
+    width: 1522px;
+    height: 512px;
+    flex-shrink: 0;
+    margin-left: -20px;
+    background-color: #51bbf5;
 }
 
 .hero_text_container {
@@ -89,7 +90,7 @@ body {
 .explore_button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #000;
+    background-color: #1d64c2;
     color: #fff;
     text-decoration: none;
     margin-top: 20px;
@@ -98,7 +99,7 @@ body {
 
 .hero_image img {
     max-width: 100%;
-    height: auto;
+    height: 700px;
 }
 
 /* Job Search Section */
@@ -152,7 +153,7 @@ body {
 
 .search_button {
     padding: 12px 20px; /* Consistent padding */
-    background-color: #000; /* Black background for the button */
+    background-color: #1d64c2; /* Black background for the button */
     color: #fff;
     border: none;
     cursor: pointer;
@@ -171,9 +172,13 @@ body {
     align-items: center;
     justify-content: space-between; /* Ensure the buttons and content are spread */
     position: relative;
-    max-width: 100%;
-    margin: 50px auto;
+    padding-left: 20px;
+    padding-right: 20px;
     overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .carousel_items_wrapper_008 {
@@ -195,7 +200,14 @@ body {
     text-align: center;
     flex: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
 }
+
+.carousel_item_005:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+    transform: translateY(-5px); /* Slightly lifts the item */
+}
+
 
 .carousel_icon_006 {
     font-size: 2.5em;
@@ -213,6 +225,7 @@ body {
     transform: translateY(-50%);
     z-index: 10; /* Keep buttons on top */
     padding: 10px;
+    margin: 0;
     transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
@@ -261,6 +274,8 @@ body {
 /* Job Listings */
 .job_listings_section {
     padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .job_card {
@@ -268,16 +283,25 @@ body {
     align-items: center;
     background-color: #fff;
     padding: 20px;
+    height: 230px;
     border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
 }
+
+.job_card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Darker and larger shadow on hover */
+    transform: translateY(-5px); /* Slightly moves the card up */
+}
+
 
 .job_image_container img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-right: 40px;
+    margin-left: 30px;
 }
 
 .job_details_container {
@@ -286,7 +310,7 @@ body {
 
 .job_title {
     font-size: 1.5em;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .job_salary {
@@ -297,10 +321,11 @@ body {
 .job_location, .job_type {
     font-size: 1em;
     color: #555;
+    margin-top: 5px;
 }
 
 .job_tags {
-    margin: 10px 0;
+    margin-right: 260px ;
 }
 
 .tag {
@@ -312,10 +337,20 @@ body {
 }
 
 .apply_button {
-    background-color: #000;
+    background-color: #1d64c2;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 3.5%;
+    width: 100px;
+    height: 52px;
+    font-size: large;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.apply_button:hover {
+    background-color: #555; /* Changes background color on hover */
+    transform: scale(1.05); /* Slightly enlarges the button */
 }
