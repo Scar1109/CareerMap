@@ -2,41 +2,46 @@
 session_start();
 include_once 'includes/config.php';  // Ensure you have a proper session and connection setup
 
-// Assuming the company ID is passed via URL
-$company_id = isset($_GET['company_id']) ? (int)$_GET['company_id'] : 1;
 $userId = $_SESSION['userid'] ?? '';  // Fetch logged-in user ID from session
+$role = $_SESSION['role'] ?? ''; // Fetch the user role from the session
 
-if ($company_id > 0) {
-    // Fetch company details
-    $sql = "SELECT * FROM companies WHERE id = ?";
+if ($userId) {
+    // Fetch the company related to the logged-in user
+    $sql = "SELECT * FROM companies WHERE userId = ?";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("i", $company_id);
+    $stmt->bind_param("i", $userId); // Use the userId from the session
     $stmt->execute();
     $company_result = $stmt->get_result();
 
     if ($company_result->num_rows > 0) {
         $company = $company_result->fetch_assoc();
+        $company_id = $company['id']; // Now we have the company_id for the logged-in user
+
+        // Fetch job applications related to this company
+        $sql = "SELECT jobs.title, jobs.salary, jobs.location, applications.name, applications.email, applications.applied_at 
+                FROM applications
+                JOIN jobs ON applications.job_id = jobs.id
+                WHERE jobs.user_id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $company_id);
+        $stmt->execute();
+        $applications_result = $stmt->get_result();
+
+        // Fetch company jobs related to the user
+        $job_sql = "SELECT id, title, salary, location FROM jobs WHERE user_id = ?";
+        $stmt_jobs = $con->prepare($job_sql);
+        $stmt_jobs->bind_param("i", $company_id);
+        $stmt_jobs->execute();
+        $jobs_result = $stmt_jobs->get_result();
     } else {
-        echo "Company not found!";
+        echo "Company not found for the user!";
         exit;
     }
     $stmt->close();
-
-    // Fetch company job applications
-    $sql = "SELECT jobs.title, jobs.salary, jobs.location, applications.name, applications.email, applications.applied_at 
-            FROM applications
-            JOIN jobs ON applications.job_id = jobs.id
-            WHERE jobs.user_id = ?";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("i", $company_id);
-    $stmt->execute();
-    $applications_result = $stmt->get_result();
 } else {
-    echo "Invalid company ID!";
+    echo "User not logged in!";
     exit;
 }
-
-$role = $_SESSION['role'] ?? ''; // Fetch the user role from the session
 ?>
 
 <!DOCTYPE html>
@@ -114,6 +119,27 @@ $role = $_SESSION['role'] ?? ''; // Fetch the user role from the session
                 <?php endwhile; ?>
             <?php else: ?>
                 <p>No applications found for this company.</p>
+            <?php endif; ?>
+        </div>
+    </section>
+    <?php endif;?>
+
+
+    <!-- My Job List Section -->
+    <?php if ($role === 'employer'): // Show this section only to employer users ?>
+    <section class="CP_recent-jobs">
+        <h2>My Job List</h2>
+        <div class="CP_jobs-list">
+            <?php if ($jobs_result->num_rows > 0): ?>
+                <?php while ($job = $jobs_result->fetch_assoc()): ?>
+                    <div class="CP_job-item">
+                        <h3><a href="viewJob.php?job_id=<?= htmlspecialchars($job['id']) ?>"><?= htmlspecialchars($job['title']) ?></a></h3> <!-- Job title links to job view page -->
+                        <p>Salary: $<?= htmlspecialchars(number_format($job['salary'])) ?></p>
+                        <p>Location: <?= htmlspecialchars($job['location']) ?></p>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No jobs available at the moment.</p>
             <?php endif; ?>
         </div>
     </section>

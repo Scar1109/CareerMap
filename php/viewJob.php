@@ -76,6 +76,7 @@ function time_elapsed_string($datetime, $full = false) {
                 <div><h2><?php echo htmlspecialchars($job['title']); ?></h2></div> 
                 <div class="JB_job-buttons">
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'employer' && $job['user_id'] == $_SESSION['userid']): ?>
+                        <div><a href="applyJob.php?job_id=<?php echo $job['id']; ?>" class="JB_apply-btn">Apply</a></div>
                         <div><a href="editJob.php?job_id=<?php echo $job['id']; ?>" class="JB_apply-btn">Edit</a></div>
                         <form action="../php/includes/deleteJob.inc.php" method="POST">
                             <input type="hidden" name="job_id" value="<?php echo $job['id']; ?>">

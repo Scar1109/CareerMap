@@ -82,9 +82,10 @@
 .JB_job-buttons{
     display: flex;
      flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    width: 15%;
+    gap: 10px;
+    width: 25%;
 }
 .JB_job-header {
    
