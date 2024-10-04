@@ -69,6 +69,7 @@ body {
     font-size: 0.9em;
     color: #888;
     margin-bottom: 30px;
+    font-size: large;
 }
 
 .blog_image_007 {
@@ -310,6 +311,7 @@ body {
     margin-bottom: 30px;
 }
 
+
 /* Blog Date */
 .blog_date_container_002 {
     display: flex;
@@ -347,6 +349,7 @@ body {
     font-family: 'Cursive', sans-serif; /* Handwritten style */
     color: #333;
     text-align: center;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 

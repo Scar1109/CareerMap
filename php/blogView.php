@@ -22,13 +22,17 @@ if (isset($_GET['id'])) {
         exit();
     }
 
-    // Close the statement and connection
+    // Close the statement
     $stmt->close();
-    $con->close();
 } else {
     echo "Invalid blog ID.";
     exit();
 }
+
+// Fetch the logged-in user ID
+$currentUserId = $_SESSION['userid'] ?? null; // Fetch the logged-in user ID from the session
+
+$con->close();
 ?>
 
 <!DOCTYPE html>
@@ -47,20 +51,21 @@ if (isset($_GET['id'])) {
 
     <div class="blog_view_container_001">
         <!-- Display the blog content -->
-        <h1><?= htmlspecialchars($blog['title']) ?></h1>
+        
         <p class="blog_date_006"><?= date('d M Y', strtotime($blog['date'])) ?></p>
         
         <!-- Blog Image -->
         <div class="blog_image_container_007">
             <img src="../uploads/<?= htmlspecialchars($blog['image_path']) ?>" alt="<?= htmlspecialchars($blog['title']) ?>" class="blog_image_005">
         </div>
-
+        <h1 class="blog_title_006"><?= htmlspecialchars($blog['title']) ?></h1>
         <!-- Blog Description -->
         <div class="blog_description_content_008">
             <p><?= nl2br(htmlspecialchars($blog['description'])) ?></p>
         </div>
 
-        <!-- Edit and Delete Buttons -->
+        <!-- Edit and Delete Buttons (shown only if current user is the blog owner) -->
+        <?php if ($currentUserId === $blog['user_id']): ?>
         <div class="blog_buttons_container_008">
             <!-- Edit Blog -->
             <form action="../php/updateBlog.php" method="POST" style="display:inline;">
@@ -74,6 +79,7 @@ if (isset($_GET['id'])) {
                 <button type="submit" class="delete_button_010" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</button>
             </form>
         </div>
+        <?php endif; ?>
     </div>
 
     <?php include_once 'footer.php'; ?>
