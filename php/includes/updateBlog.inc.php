@@ -25,10 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['blog_image']) && $_FILES['blog_image']['error'] === 0) {
         $image = $_FILES['blog_image'];
         $imageName = uniqid() . '-' . basename($image['name']);
-        $imagePath = '../uploads/' . $imageName;
+        $uploadsDir = realpath(__DIR__ . '../../uploads'); // Get the real path to uploads folder
+        $imagePath = $uploadsDir . '/' . $imageName;
 
         // Ensure the uploads folder is writable
-        if (!is_writable('../uploads')) {
+        if (!is_writable($uploadsDir)) {
             echo "Upload directory is not writable.";
             exit();
         }
