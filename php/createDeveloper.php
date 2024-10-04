@@ -27,6 +27,9 @@
             <!-- Full Name -->
             <label for="fullname-234" class="label-234">Full Name</label>
             <input type="text" name="fullname" id="fullname-234" placeholder="Your full name" required class="input-234">
+
+            <label for="email-234" class="label-234">Email</label>
+            <input type="email" name="email" id="email-234" placeholder="Your your primary email" required class="input-234">
             
             <!-- Short Bio -->
             <label for="bio-234" class="label-234">Short Bio</label>
@@ -57,7 +60,7 @@
             <input type="url" name="portfolio" id="portfolio-234" placeholder="Portfolio link" class="input-url-234">
             
             <!-- Submit Button -->
-            <button type="submit" name="submit" class="submit-btn-234">Create Profile</button>
+            <button type="submit" id="submit-btn-234" name="submit" class="submit-btn-234">Create Profile</button>
         </form>
     </div>
 
