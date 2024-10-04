@@ -68,7 +68,8 @@ body {
 .blog_date_006 {
     font-size: 0.9em;
     color: #888;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: large;
 }
 
 .blog_image_007 {
@@ -78,6 +79,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     font-size: 1.5em;
     color: #666;
 }
@@ -173,10 +176,18 @@ body {
     font-size: 1em;
     margin-bottom: 10px;
     background-color: #1891d1;
+    color: #fff; /* Optional: Ensure text is white */
     cursor: pointer;
     padding: 10px;
     border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and color */
 }
+
+.image_upload_label_004:hover {
+    background-color: #0e76a8; /* Darker shade of blue on hover */
+    color: #f0f0f0; /* Slightly lighter text color on hover (optional) */
+}
+
 
 .image_preview_005 {
     display: flex;
@@ -308,6 +319,7 @@ body {
     margin-bottom: 30px;
 }
 
+
 /* Blog Date */
 .blog_date_container_002 {
     display: flex;
@@ -345,6 +357,7 @@ body {
     font-family: 'Cursive', sans-serif; /* Handwritten style */
     color: #333;
     text-align: center;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 
@@ -358,6 +371,17 @@ body {
 }
 
 .blog_content_007 p {
+    margin-bottom: 20px;
+}
+
+.blog_description_content_008 p{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.blog_title_content_view{
+    text-align: center;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -377,13 +401,20 @@ body {
 }
 
 .edit_button_009 {
-    background-color: #000;
+    background-color: #1d64c2;
     color: #fff;
+    border: none; /* Optional: Remove border if needed */
+    padding: 10px 20px; /* Optional: Add padding for a better button feel */
+    font-size: 16px; /* Optional: Set font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and color */
 }
 
 .edit_button_009:hover {
-    background-color: #444;
+    background-color: #3a9ad9; /* Lighter shade of the original color */
+    color: #fff; /* Keep the text white */
 }
+
 
 .delete_button_010 {
     background-color: #e74c3c;
