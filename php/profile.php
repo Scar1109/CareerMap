@@ -93,14 +93,14 @@ $stmt->close();
             display: block;
             width: 30%;
             height: 40px;
-            background-color: #333;
+            background-color: #1d64c2;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             display: inline-block;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
         .general-info {
             background-color: white;

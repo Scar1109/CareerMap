@@ -53,9 +53,10 @@ if (  $userId) {  // Corrected the condition
     <style>
         /* Company Profile form styling */
         .CP_container {
-            max-width: 760px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            padding-right :50px;
             background-color: white;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -95,6 +96,7 @@ if (  $userId) {  // Corrected the condition
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            width: 100%;
         }
         .CP_button:hover {
             background-color: #444;

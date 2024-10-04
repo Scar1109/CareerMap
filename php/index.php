@@ -1,3 +1,15 @@
+<?php
+session_start();
+include_once 'includes/config.php';  // Make sure the database connection is established
+
+// Fetch jobs and corresponding company names from the database
+$sql = "SELECT jobs.id, jobs.title, jobs.salary, jobs.location, jobs.image, companies.name AS company_name 
+        FROM jobs 
+        JOIN companies ON jobs.user_id = companies.userId";
+$result = $con->query($sql);
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,29 +132,36 @@
             </div>
         </section>
 
-        <!-- Job Listings Section -->
-        <section class="job_listings_section">
-            <!-- Single Job Card -->
-            <div class="job_card">
-                <div class="job_image_container">
-                    <img src="job_image_placeholder.jpg" alt="Job Image">
-                </div>
-                <div class="job_details_container">
-                    <h3 class="job_title">UI/UX Designer</h3>
-                    <p class="job_salary">$95K - $120K</p>
-                    <p class="job_location">Tucson, AZ</p>
-                    <p class="job_type">Onsite</p>
-                </div>
-                <div class="job_tags">
-                        <span class="tag">Tag 1</span>
-                        <span class="tag">Tag 2</span>
-                        <span class="tag">Tag 3</span>
+              <!-- Job Listings Section -->
+              <section class="job_listings_section">
+            <?php if ($result->num_rows > 0): ?>
+                <?php while ($job = $result->fetch_assoc()): ?>
+                    <!-- Single Job Card -->
+                    <div class="job_card">
+                        <div class="job_image_container">
+                            <img src="<?= htmlspecialchars($job['image']) ?>" alt="Job Image">
+                        </div>
+                        <div class="job_details_container">
+                            <h3 class="job_title"><?= htmlspecialchars($job['title']) ?></h3>
+                            <p class="job_salary">Rs: <?= htmlspecialchars(number_format($job['salary'])) ?></p>
+                            <p class="job_location"><?= htmlspecialchars($job['location']) ?></p>
+                            <p class="job_type"><?= htmlspecialchars($job['company_name']) ?></p> <!-- Display company name -->
+                        </div>
+                        <div class="job_tags">
+                            <span class="tag">Full Time</span>
+                            <span class="tag">Remote</span>
+                        </div>
+                        <!-- Apply Button with link to jobView page -->
+                        <a href="viewJob.php?job_id=<?= $job['id'] ?>">
+                            <button class="apply_button">Apply</button>
+                        </a>
                     </div>
-                    <button class="apply_button">Apply</button>
-            </div>
-
-            <!-- Add more job cards here -->
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No jobs available at the moment.</p>
+            <?php endif; ?>
         </section>
+
     </div>
 
         <?php

@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("iisss", $job_id, $user_id, $name, $email, $uploadFilePath);
 
             if ($stmt->execute()) {
-                echo "Application submitted successfully!";
+                header("Location: ../index.php");
             } else {
                 echo "Error: " . $stmt->error;
             }
