@@ -1,3 +1,19 @@
+
+// Email validation function using regex
+function isValidEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+// Event listener for form submission
+document.getElementById('submit-btn-234').addEventListener('click', function(event) {
+    const emailInput = document.getElementById('email-234').value;
+
+    if (!isValidEmail(emailInput)) {
+        alert('Please enter a valid email address.');
+    }
+})
+
 //Create developer form validation
 document.getElementById("developerForm-234").addEventListener("submit", function (event) {
     var fullname = document.getElementById("fullname-234").value;

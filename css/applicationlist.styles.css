@@ -1,0 +1,138 @@
+/* General Styling */
+.container-app-789 {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #1891d1;
+    margin-bottom: 30px;
+}
+
+.success-789 {
+    color: green;
+    text-align: center;
+}
+
+.error-789 {
+    color: red;
+    text-align: center;
+}
+
+/* Application Item */
+.application-item-789 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.application-info-789 {
+    max-width: 65%;
+}
+
+.application-info-789 h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.application-info-789 p {
+    color: #666;
+}
+
+.application-actions-789 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Buttons */
+.edit-btn-789, .cancel-btn-789 {
+    padding: 10px 15px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: #1891d1;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-btn-789:hover, .cancel-btn-789:hover {
+    background-color: #0f6fa1;
+}
+
+.cancel-btn-789 {
+    background-color: #e74c3c;
+}
+
+.cancel-btn-789:hover {
+    background-color: #c0392b;
+}
+
+/* Modal Styling */
+.modal-789 {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-789 {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.close-789 {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-content-789 label {
+    display: block;
+    text-align: left;
+    color: #333;
+}
+
+.modal-content-789 input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.save-btn-789 {
+    padding: 10px 20px;
+    background-color: #1891d1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-btn-789:hover {
+    background-color: #0f6fa1;
+}

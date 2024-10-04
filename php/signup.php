@@ -146,7 +146,7 @@
                 <label for="role">Role</label>
                 <select id="role" name="role" required>
                     <option value="user">User</option>
-                    <option value="employee">Employee</option>
+                    <option value="employer">Employer</option>
                 </select>
 
                 <button type="submit" name="submit" class="signup-button">Sign Up</button>

@@ -26,7 +26,7 @@ if ($company_id > 0) {
     $sql = "SELECT jobs.title, jobs.salary, jobs.location, applications.name, applications.email, applications.applied_at 
             FROM applications
             JOIN jobs ON applications.job_id = jobs.id
-            WHERE jobs.company_id = ?";
+            WHERE jobs.user_id = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $company_id);
     $stmt->execute();
@@ -35,6 +35,8 @@ if ($company_id > 0) {
     echo "Invalid company ID!";
     exit;
 }
+
+$role = $_SESSION['role'] ?? ''; // Fetch the user role from the session
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +71,7 @@ if ($company_id > 0) {
         <?php if ($company['userId'] == $userId): // Show Edit/Delete buttons only if the logged-in user owns the company ?>
         <div class="CP_social-actions">
             <!-- Edit Button: Redirect to createCompany.php with the company_id as a query parameter -->
-            <a href="createCompany.php?company_id=<?= $company_id ?>" class="CP_follow-btn" class="CP_follow-btn">
+            <a href="createCompany.php?company_id=<?= $company_id ?>">
                 <button type="button" class="CP_follow-button" >Edit</button>
             </a>
 
@@ -95,6 +97,7 @@ if ($company_id > 0) {
 
     </section>
 
+    <?php if ($role === 'employer'): // Show this section only to employer users ?>
     <section class="CP_recent-jobs">
         <h2>Recent Job Applicant</h2>
         <div class="CP_jobs-list">
@@ -114,6 +117,7 @@ if ($company_id > 0) {
             <?php endif; ?>
         </div>
     </section>
+    <?php endif;?>
 </div>
 
 <?php include_once 'footer.php'; ?>

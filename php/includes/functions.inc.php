@@ -118,8 +118,8 @@ function createUser($con, $first_name, $last_name, $username, $email, $password,
     // Redirect based on role
     if ($role === 'user') {
         header("Location: ../index.php?signup=success");
-    } elseif ($role === 'employee') {
-        header("Location: ../employee_dashboard.php?signup=success"); 
+    } elseif ($role === 'employer') {
+        header("Location: ../companyProfile.php?signup=success"); 
     } else {
         header("Location: ../index.php");
     }

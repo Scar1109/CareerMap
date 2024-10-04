@@ -151,7 +151,7 @@
                 <h2>Meet Our Team</h2>
                 <div class="team-section">
                     <div class="team-member">
-                        <img src="/api/placeholder/150/150" alt="Jane Doe">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/037/098/807/small_2x/ai-generated-a-happy-smiling-professional-man-light-blurry-office-background-closeup-view-photo.jpg" alt="Jane Doe">
                         <h3>Jane Doe</h3>
                         <p>CEO & Co-founder</p>
                         <div class="team-member-bio">
@@ -160,7 +160,7 @@
                         <button class="bio-toggle">Read Bio</button>
                     </div>
                     <div class="team-member">
-                        <img src="/api/placeholder/150/150" alt="John Smith">
+                        <img src="https://heroshotphotography.com/wp-content/uploads/2023/03/male-linkedin-corporate-headshot-on-white-square-1024x1024.jpg" alt="John Smith">
                         <h3>John Smith</h3>
                         <p>CTO</p>
                         <div class="team-member-bio">
@@ -169,7 +169,7 @@
                         <button class="bio-toggle">Read Bio</button>
                     </div>
                     <div class="team-member">
-                        <img src="/api/placeholder/150/150" alt="Emma Wilson">
+                        <img src="https://amelieclements.com/wp-content/uploads/2022/02/business-portrait-woman-photographer-zurich-professional-headshot-amelie-clements-corporate-photoshoot-portfolio-apercu.jpg" alt="Emma Wilson">
                         <h3>Emma Wilson</h3>
                         <p>Head of Career Counseling</p>
                         <div class="team-member-bio">
