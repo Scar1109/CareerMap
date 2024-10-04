@@ -50,15 +50,7 @@
     include_once 'footer.php';
 ?>
 
-<script>
-    // Check if 'success' is in the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('success') && urlParams.get('success') === '1') {
-        // Show the success message using JavaScript
-        const successMessage = document.getElementById('successMessage');
-        successMessage.style.display = 'block';
-    }
-</script>
+<script src="../js/job.js"></script>
 
 </body>
 </html>
