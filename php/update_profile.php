@@ -17,12 +17,12 @@ if (!isset($_SESSION["userid"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate and sanitize input
     $userId = $_SESSION["userid"];
-    $firstName = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING);
-    $lastName = filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING);
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $firstName = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $lastName = filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $phoneNumber = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
-    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+    $phoneNumber = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

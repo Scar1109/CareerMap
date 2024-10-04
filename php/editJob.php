@@ -95,9 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="JB_salary" class="JB_label">Salary</label>
         <input type="number" id="JB_salary" name="salary" class="JB_input" placeholder="Enter salary (e.g., 50000)" value="<?php echo htmlspecialchars($salary); ?>" required><br>
 
-        <label for="JB_company_image" class="JB_label">Company Image</label>
-        <input type="text" id="JB_company_image" name="company_image" class="JB_input" placeholder="Enter company Image Url" value="<?php echo htmlspecialchars($company_image); ?>" required><br>
-
         <input type="submit" value="Save Job" class="JB_button">
     </form>
 </div>
