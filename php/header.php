@@ -1,11 +1,8 @@
 <?php
 // Start the session to access session variables
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-
 
 // Get the current page to highlight the active menu
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -29,7 +26,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             </a>
             <a href="profile.php" class="loggedInUserText">
                 <p>' . htmlspecialchars($_SESSION["username"]) . '</p> <!-- Display the username safely -->
-            </a>
+            </a>          
             <div class="user-dropdown-content">
                 <a href="profile.php">Account details</a>
                 <a href="includes/logout.inc.php">Log out</a> <!-- Ensure this points to your logout script -->
@@ -48,9 +45,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
 </div>
 
 <ul class="headerNav">
-    <li <?php if($current_page === 'index.php') echo ' class="active"'; ?>><a href="index.php">Home</a></li>
-    <li <?php if($current_page === 'developers.php') echo ' class="active"'; ?>><a href="developers.php">Developers</a></li>
-    <li <?php if($current_page === 'blogs.php') echo ' class="active"'; ?>><a href="blogs.php">Blogs</a></li>
-    <li <?php if($current_page === 'aboutUs.php') echo ' class="active"'; ?>><a href="aboutUs.php">About Us</a></li>
-    <li <?php if($current_page === 'contactUs.php') echo ' class="active"'; ?>><a href="contactUs.php">Contact Us</a></li>
+    <li <?php if ($current_page === 'index.php') echo ' class="active"'; ?>><a href="index.php">Home</a></li>
+    <li <?php if ($current_page === 'developers.php') echo ' class="active"'; ?>><a href="developers.php">Developers</a></li>
+    <li <?php if ($current_page === 'blogs.php') echo ' class="active"'; ?>><a href="blogs.php">Blogs</a></li>
+    <li <?php if ($current_page === 'aboutUs.php') echo ' class="active"'; ?>><a href="aboutUs.php">About Us</a></li>
+    <li <?php if ($current_page === 'contactUs.php') echo ' class="active"'; ?>><a href="contactUs.php">Contact Us</a></li>
 </ul>
+

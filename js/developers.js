@@ -50,7 +50,7 @@ function enableEdit() {
 
         // Hide Edit button and Delete button
         document.getElementById('edit-profile-btn-456').style.display = 'none'; 
-        document.getElementById('delete-profile-btn-456').style.display = 'none'; // Hide Delete button
+        document.getElementById('delete-profile-btn-456').style.display = 'none'; 
 
         // Show Save and Cancel buttons
         document.getElementById('save-changes-btn-456').style.display = 'inline-block'; 
@@ -83,7 +83,7 @@ function cancelEdit() {
     document.getElementById('cancel-edit-btn-456').style.display = 'none'; 
 }
 
-// Save Changes Function
+// Save Changes Function 
 function saveChanges() {
     if (confirm("Are you sure you want to save changes?")) {
         const fullname = document.getElementById('fullname-456').value;
@@ -99,17 +99,23 @@ function saveChanges() {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'includes/updateDeveloper.inc.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // Construct the form data string correctly
+        const data = `fullname=${encodeURIComponent(fullname)}&bio=${encodeURIComponent(bio)}&skills=${encodeURIComponent(skills)}&pay=${encodeURIComponent(pay)}&github_link=${encodeURIComponent(github_link)}&linkedin_link=${encodeURIComponent(linkedin_link)}&behance_link=${encodeURIComponent(behance_link)}&stackoverflow_link=${encodeURIComponent(stackoverflow_link)}&portfolio_link=${encodeURIComponent(portfolio_link)}`;
+
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alert('Profile updated successfully!');
+                alert(xhr.responseText); // Display success message from the server
                 location.reload(); // Reload the page after successful update
             } else {
                 alert('Error updating profile.');
             }
         };
-        xhr.send('fullname=' + fullname + '&bio=' + bio + '&skills=' + skills + '&pay=' + pay + '&github_link=' + github_link + '&linkedin_link=' + linkedin_link + '&behance_link=' + behance_link + '&stackoverflow_link=' + stackoverflow_link + '&portfolio_link=' + portfolio_link);
+        xhr.send(data); // Send the constructed form data
     }
 }
+
+
 
 // Delete profile with confirmation
 function confirmDelete(developerId) {

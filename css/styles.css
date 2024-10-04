@@ -43,6 +43,21 @@ body {
     text-decoration: none;
     margin: 20px 10px 0px 0px;
 }
+.add_Job_Button{
+    float: right;
+    color: #ffffff;
+    margin: 10px 20px 10px 0px;
+    background-color: #f3a109;
+    padding: 10px 10px 0px 10px;
+    height: 30px;
+    width: 120px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
 
 .loggedInUser {
     float: right;

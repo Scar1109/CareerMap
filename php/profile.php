@@ -213,10 +213,11 @@ $stmt->close();
             </div>
         <?php endif; ?>
 
-            <?php if ($companyExists): ?>
-                <!-- View Company Profile button appears only if the user has a company profile -->
+        <?php if ($companyExists && $role === 'employer'): ?>
+                <!-- View Company Profile button appears only if the user has a company profile and role is employer -->
                 <a href="companyProfile.php?company_id=<?= $companyId ?>"><button class="view-company-button">View Company Profile</button></a>
             <?php endif; ?>
+
         </div>
 
         <form class="general-info" action="update_profile.php" method="POST">

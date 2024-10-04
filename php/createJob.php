@@ -41,7 +41,7 @@
         <input type="number" id="JB_salary" name="salary" class="JB_input" placeholder="Enter salary (e.g., 50000)" required><br>
 
         <label for="JB_company_image" class="JB_label">Company Image</label>
-        <input type="text" id="JB_company_image" name="company_image" class="JB_input" placeholder="Enter company Image Url" required><br>
+        <input type="file" id="JB_company_image" name="company_image" class="JB_input" accept="image/*" required><br>
 
         <input type="submit" value="Create Job" class="JB_button">
     </form>

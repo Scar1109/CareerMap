@@ -5,8 +5,10 @@ include_once 'includes/config.php';  // Make sure the database connection is est
 // Fetch jobs and corresponding company names from the database
 $sql = "SELECT jobs.id, jobs.title, jobs.salary, jobs.location, jobs.image, companies.name AS company_name 
         FROM jobs 
-        JOIN companies ON jobs.user_id = companies.userId";
+        JOIN companies ON jobs.user_id = companies.userId
+        ORDER BY jobs.id DESC"; // Fetch jobs in descending order by job ID
 $result = $con->query($sql);
+
 
 ?>
 
@@ -26,39 +28,7 @@ $result = $con->query($sql);
     <?php
     include_once 'header.php';
     ?>
-    <!--slide show -->
-    <!--slide show -->
-
-    <!-- <div class="slideshow">
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="../images/1.svg" style="width:100%; height:auto;" >
-            </div>
-            <div class="mySlides fade">
-                <img src="../images/2.svg" style="width:100%; height:auto;">
-            </div>
-            <div class="mySlides fade">
-                <img src="../images/3.svg" style="width: 100%; height:auto;">
-            </div>
-            <div class="mySlides fade">
-                <img src="../images/4.svg" style="width: 100%; height:auto;">
-            </div>
-            <div class="mySlides fade">
-                <img src="../images/5.svg" style="width: 100%; height:auto;">
-            </div>
-        </div>
-        <br>
-
-        <div class="dots" style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span> 
-                <span class="dot" onclick="currentSlide(2)"></span> 
-                <span class="dot" onclick="currentSlide(3)"></span> 
-                <span class="dot" onclick="currentSlide(4)"></span> 
-                <span class="dot" onclick="currentSlide(5)"></span> 
-        </div>
-        
-    </div> -->
-
+    
     <div class="home_page_main_container">
         <!-- Hero Section -->
         <section class="hero_section">
@@ -139,7 +109,7 @@ $result = $con->query($sql);
                     <!-- Single Job Card -->
                     <div class="job_card">
                         <div class="job_image_container">
-                            <img src="<?= htmlspecialchars($job['image']) ?>" alt="Job Image">
+                            <img src="../uploads/<?= htmlspecialchars($job['image']) ?>" alt="Job Image">
                         </div>
                         <div class="job_details_container">
                             <h3 class="job_title"><?= htmlspecialchars($job['title']) ?></h3>
