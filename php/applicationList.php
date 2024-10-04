@@ -129,7 +129,7 @@ $result = $stmt->get_result();
     <script>
         // Open the edit modal and populate the fields
         function openEditForm(id, name, email, resume) {
-            document.getElementById('edit-modal-789').style.display = 'block';
+            document.getElementById('edit-modal-789').style.display = 'flex';
             document.getElementById('edit-application-id-789').value = id;
             document.getElementById('edit-name-789').value = name;
             document.getElementById('edit-email-789').value = email;

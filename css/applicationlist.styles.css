@@ -108,6 +108,12 @@ h1 {
     cursor: pointer;
 }
 
+.modal-content-789 label {
+    display: block;
+    text-align: left;
+    color: #333;
+}
+
 .modal-content-789 input {
     width: 100%;
     padding: 10px;
