@@ -43,3 +43,31 @@ function startSlideshow() {
     }, 5000);
 }
 
+const leftBtn = document.querySelector('.carousel_btn_left_003');
+const rightBtn = document.querySelector('.carousel_btn_right_007');
+const carouselItems = document.querySelector('.carousel_items_004');
+
+let currentScrollPosition = 0;
+const scrollAmount = 270; // Width of one item including margin
+
+const totalItems = document.querySelectorAll('.carousel_item_005').length;
+const visibleItems = 4; // Number of visible items
+const maxScrollPosition = (totalItems - visibleItems) * scrollAmount;
+
+function updateCarouselPosition() {
+    carouselItems.style.transform = `translateX(-${currentScrollPosition}px)`;
+}
+
+leftBtn.addEventListener('click', () => {
+    if (currentScrollPosition > 0) {
+        currentScrollPosition -= scrollAmount;
+        updateCarouselPosition();
+    }
+});
+
+rightBtn.addEventListener('click', () => {
+    if (currentScrollPosition < maxScrollPosition) {
+        currentScrollPosition += scrollAmount;
+        updateCarouselPosition();
+    }
+});
