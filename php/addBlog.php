@@ -48,13 +48,19 @@
             </div>
 
             <div class="form_buttons_011">
-                <button type="button" class="cancel_button_012">Cancel</button>
+            <button type="button" class="cancel_button_012" id="cancelButton">Cancel</button>
                 <button type="submit" class="save_button_013">Save</button>
             </div>
         </form>
     </div>
 
     <script>
+        // Get the button element by its ID or class
+    document.getElementById("cancelButton").addEventListener("click", function() {
+        // Redirect to the desired page when the button is clicked
+        window.location.href = "../php/blogs.php";
+    });
+
         // JavaScript for image preview
         function previewImage(event) {
             const imagePreview = document.getElementById('imagePreview');
